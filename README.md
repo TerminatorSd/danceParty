@@ -1,5 +1,6 @@
 # danceParty
-danceParty\n
+danceParty
+
 |-- backend // 后端代码
 |-- html // 前端页面
 |-- js // 前端js
