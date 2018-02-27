@@ -1,0 +1,43 @@
+【user】表
+|-- id (用户id) int(11)
+|-- gender (性别) varchar(256)
+|-- label (标签) varchar(256)
+|-- phone (电话) text
+|-- school (学校) varchar(256)
+|-- name (用户名称) varchar(256)
+
+
+
+【activity】表
+|-- id (自增编号) int(10)
+|-- name (活动名称) varchar(100)
+|-- label (活动标签) varchar(256)
+|-- time (活动时间) datetime
+|-- join_num (参加人数) int(10)
+|-- pub_dancer (发起者) varchar(100)
+|-- status (状态) text
+|-- join_dancer (参加人员) text
+|-- place (活动地址) text
+|-- create_time (创建时间) datetime
+
+
+
+【user_activity】表
+|-- user_id (用户id) int(11)
+|-- id (自增编号) int(11)
+|-- activity_id (活动id) int(11)
+|-- pub_status (发布状态) int(11)
+|-- join_status (参与状态) int(11)
+
+
+
+【school】表
+|-- id (学校id) int(11)
+|-- name (学校名称) varchar(256)
+|-- city (所在城市) varchar(256)
+
+
+
+【label】表
+|-- id (标签id) int(11)
+|-- name (标签名) varchar(256)
