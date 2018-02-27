@@ -7,3 +7,5 @@ danceParty  <br />
 |-- app.js         // 入口文件，请求映射 <br />
 |-- mysql.js       // 数据库操作 <br />
 |-- package.json   // 包管理 <br />
+|-- database.txt   // 数据库设计文档 <br />
+|-- danceParty.sql // 数据库 <br />
