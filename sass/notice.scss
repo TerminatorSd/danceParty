@@ -1,0 +1,49 @@
+@import "main";
+
+body {
+	background-color: #F3F7F9;
+}
+
+.exam-list {
+	.item {
+		display: block;
+		color: $common-black;
+		height: 14vw;
+		background-color: white;
+		border-bottom: .2vw solid $test-list-grey;
+		span {
+			display: block;
+			float: left;
+			width: 84vw;
+			margin-left: 4.6vw;
+			font-size: 4.2vw;
+			height: 14vw;
+			line-height: 14vw;
+			overflow: hidden;
+		}
+		img {
+			width: 2vw;
+			height: 3vw;
+			float: right;
+			margin-top: 5.5vw;
+			margin-right: 4.9vw;
+			&.down {
+				width: 2.8vw;
+				height: 2vw;
+				float: right;
+				margin-top: 6vw;
+				margin-right: 4.9vw;
+			}
+		}
+		p.description {
+			width: 80vw;
+			font-size: 4vw;
+			margin-left: 11.6vw;
+			padding-bottom: 5.4vw;
+			display: none;
+		}
+	}
+	.des {
+		height: auto;
+	}
+}

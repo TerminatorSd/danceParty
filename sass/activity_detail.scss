@@ -1,0 +1,52 @@
+@import "main";
+
+body {
+	background-color: #F3F7F9;
+	/*overflow: hidden;*/
+}
+
+.card {
+	width: 92.4vw;
+	margin-top: 1.4vw;
+	margin-left: 3.5vw;
+	background-color: white;
+	border: .2vw solid $test-list-grey;
+	border-radius: .6vw;
+	.title {
+		font-size: 5vw;
+		font-weight: bold;
+		color: $test-img-green;
+		width: 60vw;
+		margin: 7.3vw auto 0;
+		text-align: center;
+		
+	}
+	.info{
+		margin-top: 2vw;
+		margin-left: 7.7vw;
+		&:nth-child(2) {
+			margin-top: 5vw;
+		}
+		p {
+			&.head {
+				font-weight: bold;
+			}
+			&.content {
+				color: $exam-footer-grey;
+				width: 70vw;
+				margin-left: 4.4vw;
+				line-height: 1.7;
+			}
+		}
+	}
+	.blue-btn {
+		margin-top: 4.4vw;
+	}
+	.back {
+		display: block;
+		margin: 4.8vw auto;
+		color: $test-img-green;
+		text-align: center;
+		text-decoration: underline;
+	}
+}

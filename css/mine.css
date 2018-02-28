@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+p, image {
+  margin: 0; }
+
+body {
+  font: 3.6vw/1.5 tahoma,arial,sans-serif; }
+
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.font-size-sm {
+  font-size: 2.8vw; }
+
+.font-size-big {
+  font-size: 5.4vw; }
+
+.footer-push {
+  width: 100vw;
+  height: 19.4vw; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  list-style: none; }
+
+.mask {
+  position: absolute;
+  z-index: 66;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.5; }
+
+.text-blue {
+  color: #2FBDB3 !important; }
+
+.text-orange {
+  color: #F29A1C; }
+
+.text-green {
+  color: #26D17A !important; }
+
+.text-red {
+  color: #F0552B !important; }
+
+.bg-red {
+  background-color: #F0552B !important; }
+
+.bg-invalid-exam {
+  background-color: #6F7277 !important; }
+
+.active {
+  color: #2FBDB3; }
+
+.choice-active {
+  color: #2FBDB3 !important; }
+
+.label-disabled {
+  color: #E5E5E5 !important; }
+
+.blue-btn {
+  display: block;
+  width: 57.8vw;
+  height: 11.3vw;
+  line-height: 11.3vw;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #2FBDB3;
+  color: white;
+  font-size: 3.9vw;
+  font-weight: bold; }
+
+.push-bottom {
+  width: 100vw;
+  height: 16vw; }
+
+body {
+  background-color: #F3F7F9; }
+
+header {
+  height: 30.4vw;
+  background-color: white;
+  border-bottom: 0.2vw solid #E8E8EA; }
+  header a {
+    display: block;
+    height: 30.4vw; }
+    header a img.pull-right {
+      width: 2vw;
+      height: 3vw;
+      float: right;
+      margin-top: 13.7vw;
+      margin-right: 4.9vw; }
+    header a img.pass {
+      width: 14.4vw;
+      height: 13.8vw;
+      float: left;
+      margin-top: 8.9vw;
+      margin-left: 7vw;
+      /*border: .2vw solid black;*/ }
+    header a p {
+      width: 62vw;
+      margin-left: 6vw;
+      float: left;
+      overflow: hidden; }
+      header a p.name {
+        font-size: 6.4vw;
+        font-weight: bold;
+        margin-top: 7.3vw; }
+        header a p.name span.role {
+          font-size: 2.9vw;
+          color: #2FBDB3;
+          padding: .4vw 1.4vw;
+          margin-left: 1.4vw;
+          border: 0.2vw solid #2FBDB3;
+          border-radius: 1.3vw; }
+      header a p.school {
+        color: #747474; }
+      header a p.unregister {
+        font-size: 5vw;
+        line-height: 30.4vw;
+        color: #373737; }
+        header a p.unregister span {
+          color: #2FBDB3;
+          text-decoration: underline; }
+
+.list .list-item {
+  display: block;
+  height: 14vw;
+  background-color: white;
+  margin-top: 3.3vw;
+  border-top: 0.2vw solid #E8E8EA;
+  border-bottom: 0.2vw solid #E8E8EA;
+  color: #373737; }
+.list img.left {
+  width: 4.5vw;
+  height: 4.5vw;
+  float: left;
+  margin-top: 4.8vw;
+  margin-left: 4.5vw; }
+.list img.right {
+  width: 2vw;
+  height: 3vw;
+  float: right;
+  margin-top: 5.1vw;
+  margin-right: 4.9vw; }
+.list span {
+  display: block;
+  float: left;
+  line-height: 4.5vw;
+  margin-left: 3.3vw;
+  margin-top: 4.8vw; }
+
+footer {
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  width: 100vw;
+  height: 14.8vw;
+  border-top: 0.2vw solid #E8E8EA; }
+  footer a {
+    display: inline-block;
+    width: 33.3vw;
+    height: 14.8vw;
+    line-height: 14.8vw;
+    text-align: center;
+    color: #6F7277; }
+    footer a img {
+      float: left;
+      width: 6.2vw;
+      height: 6.2vw;
+      margin-left: 13.4vw;
+      margin-top: 1.6vw; }
+    footer a span {
+      float: left;
+      width: 20vw;
+      margin-left: 6.6vw;
+      height: 6vw;
+      line-height: 6vw; }
+
+/*# sourceMappingURL=mine.css.map */

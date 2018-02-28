@@ -1,0 +1,31 @@
+@import "main";
+
+body {
+	background-color: #F3F7F9;
+}
+
+.exam-list {
+	.item {
+		display: block;
+		color: $common-black;
+		height: 14vw;
+		background-color: white;
+		border-bottom: .2vw solid $test-list-grey;
+		span {
+			display: block;
+			float: left;
+			width: 80vw;
+			margin-left: 4.6vw;
+			font-size: 4.2vw;
+			line-height: 14vw;
+			overflow: hidden;
+		}
+		img {
+			width: 2vw;
+			height: 3vw;
+			float: right;
+			margin-top: 5.5vw;
+			margin-right: 4.9vw;
+		}
+	}
+}

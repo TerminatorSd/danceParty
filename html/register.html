@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<title>注册信息</title>
+
+	<link rel="stylesheet" href="../css/register.css" />
+	<link rel="stylesheet" href="../css/sd_wx_css.css" />
+</head>
+<body>
+
+	<!-- 名字，学校，标签，性别，电话 -->
+	
+	<div class="info">
+		<div class="item">
+			<input name="name" type="text" class="hide-input" placeholder="输入一个酷酷的昵称" />
+			<span class="left">昵称：</span>
+		</div>
+		<div class="item">
+			<span class="left">我的身份：</span>
+			<div class="radio-identity">
+				<span class="radio-text">学生</span>
+				<img src="../img/register/radio-grey.png" alt="" class="radio" />
+			</div>
+			<div class="radio-identity">
+				<span class="radio-text margin-right-10 chosen-identity">社会工作者</span>
+				<img src="../img/register/radio-active.png" alt="" class="radio" />
+			</div>	
+			
+		</div>
+		<div class="item">
+			<select name="school" id="" class="hide-select">
+				<option value="">已毕业</option>
+				<option value="">华工</option>
+				<option value="">中大</option>
+				<option value="">广工</option>
+			</select>
+			<span class="left">学校：</span>
+			<img src="../img/down-arrow.png" alt="" class="pull-right" />
+			<span class="right">选择你的大学</span>
+		</div>
+		
+		
+		<div class="item">
+			<span class="left">性别：</span>
+			<div class="radio-gender">
+				<span class="radio-text">女生</span>
+				<img src="../img/register/radio-grey.png" alt="" class="radio" />
+			</div>
+			<div class="radio-gender">
+				<span class="radio-text margin-right-10 chosen-gender">男生</span>
+				<img src="../img/register/radio-active.png" alt="" class="radio" />
+			</div>
+			
+		</div>
+		
+		<div class="item">
+			<input name="phone" type="text" class="hide-input" placeholder="手机号" />
+			<span class="left">电话：</span>
+		</div>
+
+		<div class="item">
+			
+			<span class="left">标签：</span>
+			<span class="label margin-right-4">地板舞</span>
+			<span class="label">破瓶</span>
+			<span class="label">黑怕</span>
+			<span class="label">锁舞</span>
+			<span class="label">鹅笨</span>
+
+		</div>
+
+		<div class="item item-photo">
+			<div class="clearfix">
+				<a>点击上传</a>
+				<span class="left">头像：</span>
+			</div>
+			
+			<img class="photo photo-img" src="">
+			<div class="photo photo-font">
+				<img id="img" src="../img/register/card.png" alt="" />
+				<span>帅气的照骗</span>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="push-bottom"></div>
+
+	<footer>
+		<a onclick="nextStep()">注册</a>
+	</footer>
+	
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/register.js"></script>
+</body>
+</html>

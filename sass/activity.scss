@@ -1,0 +1,94 @@
+@import "main";
+
+body {
+	background-color: #F3F7F9;
+	/*overflow: hidden;*/
+}
+
+.body {
+	overflow: hidden;
+
+	.test-item {
+		display: block;
+		width: 95.2vw;
+		height: 38.8vw;
+		margin-left: 2.4vw;
+		margin-top:2.8vw;
+		border: 0.2vw solid $test-list-grey;
+		border-radius: 1.2vw;
+		background-color: white;
+		position: relative;
+		overflow: hidden;
+		p {
+			margin-left: 7vw;
+			width: 80vw;
+			&.title {
+				color: $test-choice-black;
+				font-size: 4.9vw;
+				margin-top: 2.8vw;
+				height: 7.2vw;
+				overflow: hidden;
+			}
+			&.test-num {
+				&:nth-child(3) {
+					margin-top: 2.8vw;
+				}
+				&:nth-child(4) {
+					margin-top: 1vw;
+				}
+				color: $exam-footer-grey;
+				img {
+					width: 3.8vw;
+					height: 3.8vw;
+				}
+			}
+		}
+		img {
+			float: right;
+			width: 2vw;
+			height: 3.4vw;
+			margin-top: 17.7vw;
+			margin-right: 4.8vw;
+		}
+	}
+	.disabled {
+		background-color: $exam-list-disabled;
+	}
+	
+}
+
+.push-bottom {
+	width: 100vw;
+	height: 17.6vw;
+}
+
+footer {
+	position: fixed;
+	background-color: white;
+	bottom: 0;
+	width: 100vw;
+	height: 14.8vw;
+	border-top: .2vw solid $test-list-grey;
+	a {
+		display: inline-block;
+		width: 33.3vw;
+		height: 14.8vw;
+		line-height: 14.8vw;
+		text-align: center;
+		color: $exam-footer-grey;
+		img {
+			float: left;
+			width: 6.2vw;
+			height: 6.2vw;
+			margin-left: 13.4vw;
+			margin-top: 1.6vw;
+		}
+		span {
+			float: left;
+			width: 20vw;
+			margin-left: 6.6vw;
+			height: 6vw;
+			line-height: 6vw;
+		}
+	}
+}

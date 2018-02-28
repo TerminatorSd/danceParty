@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2018 at 01:45 AM
+-- Generation Time: Feb 28, 2018 at 08:06 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.7
 
@@ -33,6 +33,7 @@ CREATE TABLE `activity` (
   `name` varchar(100) NOT NULL COMMENT '活动名称',
   `label` varchar(256) NOT NULL COMMENT '活动标签',
   `time` datetime NOT NULL COMMENT '活动时间',
+  `time_len` int(11) NOT NULL COMMENT '活动时长',
   `join_num` int(10) NOT NULL COMMENT '参加人数',
   `pub_dancer` varchar(100) NOT NULL COMMENT '发起者',
   `status` text NOT NULL COMMENT '状态',

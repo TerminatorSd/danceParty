@@ -1,0 +1,46 @@
+@import "main";
+
+
+.info {
+	.item {
+		height: 14vw;
+		border-bottom: .2vw solid $test-list-grey;
+		background-color: white;
+		span {
+			&.left {
+				display: block;
+				float: left;
+				width: 26vw;
+				font-size: 4.2vw;
+				font-weight: 500;
+				line-height: 14vw;
+				margin-left: 4.2vw;
+			}
+			&.right {
+				display: block;
+				float: right;
+				width: 60vw;
+				line-height: 14vw;
+				margin-right: 4.2vw;
+				text-align: right;
+				color: $info-grey-font;
+				overflow: hidden;
+			}
+		}
+		img.photo {
+			width: 87vw;
+			margin-left: 6.5vw;
+			margin-bottom: 4vw;
+		}
+	}
+	.item-dancer {
+		height: auto;
+		padding-bottom: 4vw;
+		p {
+			margin-left: 4.2vw;
+			font-size: 4vw;
+			color: $info-grey-font;
+		}
+
+	}
+}
