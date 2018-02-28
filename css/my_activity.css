@@ -87,25 +87,45 @@ ul {
 body {
   background-color: #F3F7F9; }
 
-.exam-list .item {
-  display: block;
-  color: #373737;
-  height: 14vw;
+header {
   background-color: white;
+  height: 12vw;
   border-bottom: 0.2vw solid #E8E8EA; }
-  .exam-list .item span {
+  header ul {
+    list-style: none; }
+    header ul li {
+      display: inline-block;
+      height: 10.8vw;
+      line-height: 10.8vw;
+      width: 20vw;
+      margin: 0 6.6vw;
+      text-align: center; }
+      header ul li.active {
+        border-bottom: 1.2vw solid #2FBDB3; }
+
+.exam-list {
+  margin-top: 4vw; }
+  .exam-list .item {
     display: block;
-    float: left;
-    width: 80vw;
-    margin-left: 4.6vw;
-    font-size: 4.2vw;
-    line-height: 14vw;
-    overflow: hidden; }
-  .exam-list .item img {
-    width: 2vw;
-    height: 3vw;
-    float: right;
-    margin-top: 5.5vw;
-    margin-right: 4.9vw; }
+    color: #373737;
+    height: 14vw;
+    background-color: white;
+    border-bottom: 0.2vw solid #E8E8EA; }
+    .exam-list .item span {
+      display: block;
+      float: left;
+      width: 80vw;
+      margin-left: 4.6vw;
+      font-size: 4.2vw;
+      line-height: 14vw;
+      overflow: hidden; }
+    .exam-list .item img {
+      width: 2vw;
+      height: 3vw;
+      float: right;
+      margin-top: 5.5vw;
+      margin-right: 4.9vw; }
+  .exam-list .item-first {
+    border-top: 0.2vw solid #E8E8EA; }
 
 /*# sourceMappingURL=my_activity.css.map */

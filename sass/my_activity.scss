@@ -4,7 +4,30 @@ body {
 	background-color: #F3F7F9;
 }
 
+header {
+	background-color: white;
+	height: 12vw;
+	border-bottom: .2vw solid $test-list-grey;
+
+	ul {
+		list-style: none;
+
+		li {
+			display: inline-block;
+			height: 10.8vw;
+			line-height: 10.8vw;
+			width: 20vw;
+			margin: 0 6.6vw;
+			text-align: center;
+			&.active {
+				border-bottom: 1.2vw solid $test-img-green;
+			}
+		}
+	}
+}
+
 .exam-list {
+	margin-top: 4vw;
 	.item {
 		display: block;
 		color: $common-black;
@@ -27,5 +50,8 @@ body {
 			margin-top: 5.5vw;
 			margin-right: 4.9vw;
 		}
+	}
+	.item-first {
+		border-top: .2vw solid $test-list-grey;
 	}
 }
