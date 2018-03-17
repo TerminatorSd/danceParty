@@ -8,11 +8,50 @@
 			"status": 0
 		},
 		{
-			"name": "今晚打老虎",
+			"name": "老虎没打着",
 			"time": "2018-4-5 9:00",
-			"place": "a1",
+			"place": "华工地下室",
 			"label": "地板舞, 震感舞",
 			"status": 1
+		}
+	],
+	"activityDetails":[
+		{
+			"name":"今晚打老虎",
+			"time":"2018-4-5 9:00",
+			"place":"a1",
+			"length":"2h",
+			"status":0,
+			"label":"地板舞, 震感舞",
+			"pub_dancer":"少东",
+			"join_dancer":"少东，妓威，劳华，丘薏，村长，JJ，书记",
+			"join_num":7,
+			"note":"专心打老虎，不要玩手机"
+		},
+		{
+			"name":"老虎没打着",
+			"time":"2018-4-5 9:00",
+			"place":"华工地下室",
+			"length":"2h",
+			"status":0,
+			"label":"地板舞, 震感舞",
+			"pub_dancer":"劳华",
+			"join_dancer":"少东，妓威，劳华，丘薏，村长，JJ，书记",
+			"join_num":7,
+			"note":"今晚专攻powermove"
+		}
+	],
+	"activityList_pub":[
+		{
+			"name":"今晚打老虎"
+		},
+		{
+			"name":"老虎没打着"
+		}
+	],
+	"activityList_join":[
+		{
+			"name":"尬舞派对"
 		}
 	]
 }
