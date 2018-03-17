@@ -1,0 +1,6 @@
+未做：数据库activity表需要添加 备注【note】、活动时长【length】
+
+已做：
+1.更新data.json
+2.修改了publish_activity.html里面【活动地点】的input type。
+3.修改了publish_activity.html里面的一些input name。
