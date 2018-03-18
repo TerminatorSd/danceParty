@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+<body>
+
+<div id="wrapper">
+  <div class="cls as">
+    <ul>
+      <li onclick="getThisElement(event)">asdffsdfs</li>
+    </ul>
+  </div>
+</div>
+  
+<script>
+  function getThisElement (event) {
+    var ev = event.target;
+    var par = ev.parentNode;
+    while (par.tagName.toLowerCase() !== 'html') {
+      if(par.id) {
+        console.log(par.id);
+      } else if (par.className) {
+        console.log(par.className);
+      } else {
+        console.log(par.tagName.toLowerCase());
+      }
+      par = par.parentNode;
+    }
+    // console.log(par.tagName);
+    // console.log(event.target.tagName);
+  }
+
+  var name = "The Window";
+
+　var object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+
+
+</script>
+</body>
+</html>
