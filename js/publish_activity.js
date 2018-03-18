@@ -20,7 +20,19 @@ $(document).ready(function () {
 
 function publishActivity (argument) {
 	// body...
-	
+	var name = $('input[name=name]').val();
+	var time = $('input[name=time]').val();
+	var place = $('input[name=place]').val();
+	var timeLen = $('input[name=timeLen]').val();
+	var label = '';
+	$.each($('.active'), function () {
+		if (label) {
+			label += ',' + $(this).text();
+		}
+		else {
+			label += $(this).text();
+		}
+	})
 
-	window.location.href = 'activity.html';
+	// window.location.href = 'activity.html';
 }

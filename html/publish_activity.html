@@ -6,7 +6,6 @@
 	<title>发布活动</title>
 
 	<link rel="stylesheet" href="../css/publish_activity.css" />
-	<link rel="stylesheet" href="../css/sd_wx_css.css" />
 </head>
 <body>
 
@@ -18,43 +17,41 @@
 			<span class="left">活动名称：</span>
 		</div>
 		<div class="item">
-			<input name="name" type="datetime" class="hide-input" placeholder="输入活动名称" />
+			<input name="time" type="datetime" class="hide-input" placeholder="输入活动名称" />
 			<span class="left">活动时间：</span>
 		</div>
 		<div class="item">
-			<input name="name" type="datetime" class="hide-input" placeholder="输入活动地点" />
+			<input name="place" type="datetime" class="hide-input" placeholder="输入活动地点" />
 			<span class="left">活动地点：</span>
 		</div>
 		<div class="item">
-			<select name="school" id="" class="hide-select">
+			<select name="timeLen" id="" class="hide-select">
 				<option value="">活动时长</option>
-				<option value="">1小时</option>
-				<option value="">1.5小时</option>
-				<option value="">2小时</option>
+				<option value="1">1小时</option>
+				<option value="1.5">1.5小时</option>
+				<option value="2">2小时</option>
 			</select>
 			<span class="left">活动时长：</span>
 			<img src="../img/down-arrow.png" alt="" class="pull-right" />
 			<span class="right">选择活动时长</span>
 		</div>
 		
-		<div class="item">
+		<!-- <div class="item">
 			<input name="phone" type="text" class="hide-input" placeholder="手机号" />
 			<span class="left">电话：</span>
-		</div>
+		</div> -->
 
 		<div class="item">
-			
 			<span class="left">活动标签：</span>
 			<span class="label margin-right-4">地板舞</span>
 			<span class="label">破瓶</span>
 			<span class="label">黑怕</span>
 			<span class="label">锁舞</span>
 			<span class="label">鹅笨</span>
-
 		</div>
 
 		<div class="item">
-			<input name="phone" type="text" class="hide-input" placeholder="备注内容，不要太长" />
+			<input name="mark" type="text" class="hide-input" placeholder="备注内容，不要太长" />
 			<span class="left">备注：</span>
 		</div>
 

@@ -30,3 +30,11 @@ function delCookie(name)
     if(cval!=null)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
+
+function getStorage (name) {
+  return JSON.parse(localStorage.getItem(name));
+}
+
+function setStorage (name, val) {
+  localStorage.setItem(name, JSON.stringify(val));
+}

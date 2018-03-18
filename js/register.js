@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-	getList();
+	// getList();
 
 	// 下拉菜单选择
 	$('.hide-select').each(function (e) {
@@ -44,22 +44,26 @@ function getList () {
 	    data: {},
 	    success: function(data) {
 	        if(data.errcode == 0){
-	            alert(JSON.stringify(data.data));
+	          alert(JSON.stringify(data.data));
 	        }
 	        else
-	            alert("操作失败！");
+	          alert("操作失败！");
 	    },
 	    error: function(err) {
-	        console.log(err);
+	      console.log(err);
 	    }
 	});
 }
 
 // 点击下一步
 function nextStep () {
+
+	setStorage('id', '1');
+
+	alert(getStorage('id'));
 	
 	// 发送注册请求，成功后跳转
-	alert('sth');
+	// alert('sth');
 	
 	window.location.href = 'activity.html';
 }
