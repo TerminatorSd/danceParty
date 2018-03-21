@@ -1,6 +1,18 @@
-未做：数据库activity表需要添加 备注【note】、活动时长【length】
-
+3/18
+未做：
+数据库activity表需要添加 备注【note】。
 已做：
 1.更新data.json
 2.修改了publish_activity.html里面【活动地点】的input type。
 3.修改了publish_activity.html里面的一些input name。
+
+3/19
+未做：
+数据库user表需要添加 身份【identity】,头像图片【img】
+已做：
+1.data.json去掉每行开头的+号；
+2.register.js 完成表单数据获取
+
+3/20
+已做：
+对register.js进行完善，区分社会工作者与学生

@@ -58,12 +58,40 @@ function getList () {
 // 点击下一步
 function nextStep () {
 
-	setStorage('id', '1');
+	//setStorage('id', '1');
 
-	alert(getStorage('id'));
+	//alert(getStorage('id'));
 	
-	// 发送注册请求，成功后跳转
-	// alert('sth');
-	
-	window.location.href = 'activity.html';
+	var name = $('input[name = name]').val();
+	var identity = $('.chosen-identity').text();
+	var school = $('select[name = school] .right').text();
+	var gender = $('.chosen-gender').text();
+	var phone = $('input[name = phone]').val();
+	var label = '';
+	$.each($('.active'), function () {
+		if (label) {
+			label += ',' + $(this).text();
+		}
+		else {
+			label += $(this).text();
+		}
+	});
+
+	//头像图片
+	//var img
+
+	//社会工作者无须选择学校，是学生但未选择学校要重新输入
+	if(!name || !gender || !phone || !label || (identity =="学生" && school=="选择你的大学")){
+		alert("未全部填写完成!");
+	}
+	else{
+		if(identity=="社会工作者"){
+			alert(name+','+identity+','+gender+','+phone+','+label);
+		}else{
+			alert(name+','+identity+','+school+','+gender+','+phone+','+label);
+		}
+		// 发送注册请求，成功后跳转
+		// alert('sth');
+		window.location.href = 'activity.html';
+	}
 }
