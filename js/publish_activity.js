@@ -23,7 +23,7 @@ function publishActivity (argument) {
 	var name = $('input[name=name]').val();
 	var time = $('input[name=time]').val();
 	var place = $('input[name=place]').val();
-	var timeLen = $('input[name=timeLen]').val();
+	var timeLen = $('select[name=timeLen]').val();
 	var label = '';
 	$.each($('.active'), function () {
 		if (label) {
