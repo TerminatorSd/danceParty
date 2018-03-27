@@ -1,35 +1,29 @@
--- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 28, 2018 at 08:06 AM
--- Server version: 5.7.21
--- PHP Version: 7.1.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: dance_party
+-- ------------------------------------------------------
+-- Server version	5.7.21-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `dance_party`
---
-
--- --------------------------------------------------------
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `activity`
 --
 
+DROP TABLE IF EXISTS `activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `activity` (
-  `id` int(10) NOT NULL COMMENT '自增编号',
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '自增编号',
   `name` varchar(100) NOT NULL COMMENT '活动名称',
   `label` varchar(256) NOT NULL COMMENT '活动标签',
   `time` datetime NOT NULL COMMENT '活动时间',
@@ -39,139 +33,130 @@ CREATE TABLE `activity` (
   `status` text NOT NULL COMMENT '状态',
   `join_dancer` text NOT NULL COMMENT '参加人员',
   `place` text NOT NULL COMMENT '活动地址',
-  `create_time` datetime NOT NULL COMMENT '创建时间'
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `note` varchar(256) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动表';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `activity`
+--
+
+LOCK TABLES `activity` WRITE;
+/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `label`
 --
 
+DROP TABLE IF EXISTS `label`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `label` (
-  `id` int(11) NOT NULL COMMENT '标签id',
-  `name` varchar(256) NOT NULL COMMENT '标签名'
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '标签id',
+  `name` varchar(256) NOT NULL COMMENT '标签名',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签表';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `label`
+--
+
+LOCK TABLES `label` WRITE;
+/*!40000 ALTER TABLE `label` DISABLE KEYS */;
+/*!40000 ALTER TABLE `label` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `school`
 --
 
+DROP TABLE IF EXISTS `school`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `school` (
-  `id` int(11) NOT NULL COMMENT '学校id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学校id',
   `name` varchar(256) NOT NULL COMMENT '学校名称',
-  `city` varchar(256) NOT NULL COMMENT '所在城市'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学校表';
+  `city` varchar(256) NOT NULL COMMENT '所在城市',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='学校表';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `school`
 --
 
-INSERT INTO `school` (`id`, `name`, `city`) VALUES
-(1, '华南理工大学', '广州'),
-(3, '中山大学', '广州'),
-(4, '广东工业大学', '广州');
-
--- --------------------------------------------------------
+LOCK TABLES `school` WRITE;
+/*!40000 ALTER TABLE `school` DISABLE KEYS */;
+INSERT INTO `school` VALUES (1,'华南理工大学','广州'),(3,'中山大学','广州'),(4,'广东工业大学','广州');
+/*!40000 ALTER TABLE `school` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL COMMENT '用户id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `name` varchar(256) NOT NULL COMMENT '用户名称',
-  `school` varchar(256) NOT NULL COMMENT '学校',
+  `school` varchar(256) DEFAULT NULL,
   `label` varchar(256) NOT NULL COMMENT '标签',
   `gender` varchar(256) NOT NULL COMMENT '性别',
-  `phone` text NOT NULL COMMENT '电话'
+  `phone` text NOT NULL COMMENT '电话',
+  `type` varchar(256) NOT NULL COMMENT '身份类型',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_activity`
 --
 
+DROP TABLE IF EXISTS `user_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_activity` (
-  `id` int(11) NOT NULL COMMENT '自增编号',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增编号',
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `activity_id` int(11) NOT NULL COMMENT '活动id',
   `pub_status` int(11) NOT NULL COMMENT '发布状态',
-  `join_status` int(11) NOT NULL COMMENT '参与状态'
+  `join_status` int(11) NOT NULL COMMENT '参与状态',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户活动表';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `user_activity`
 --
 
---
--- Indexes for table `activity`
---
-ALTER TABLE `activity`
-  ADD PRIMARY KEY (`id`);
+LOCK TABLES `user_activity` WRITE;
+/*!40000 ALTER TABLE `user_activity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_activity` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for table `label`
---
-ALTER TABLE `label`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `school`
---
-ALTER TABLE `school`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_activity`
---
-ALTER TABLE `user_activity`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `activity`
---
-ALTER TABLE `activity`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '自增编号';
-
---
--- AUTO_INCREMENT for table `label`
---
-ALTER TABLE `label`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '标签id';
-
---
--- AUTO_INCREMENT for table `school`
---
-ALTER TABLE `school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学校id', AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id';
-
---
--- AUTO_INCREMENT for table `user_activity`
---
-ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增编号';
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-03-27 20:17:52
