@@ -111,6 +111,7 @@ CREATE TABLE `user` (
   `gender` varchar(256) NOT NULL COMMENT '性别',
   `phone` text NOT NULL COMMENT '电话',
   `type` varchar(256) NOT NULL COMMENT '身份类型',
+  `img_url` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -159,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-27 20:17:52
+-- Dump completed on 2018-03-29  0:02:18
