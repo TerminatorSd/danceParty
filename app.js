@@ -1,5 +1,5 @@
 
-"use strict";
+"use strict"
 
 var express             = require('express');
 var app                 = express();
@@ -9,6 +9,7 @@ var square = require('./backend/square');
 var school = require('./backend/school');
 
 var jsonData = require('./data.json')
+
 
 app.use(cookieParser());
 app.use(bodyParse.urlencoded({extended:false}));
@@ -28,20 +29,19 @@ app.all('*',function (req, res, next) {
   }
 });
 
-// // 获取广场动态接口
-// app.get('/square/news', square.getNews);
-  
-// // 处理/login的post请求
-// app.post('/login',function(req,res){
-//     name=req.body.name ;
-//     pwd=req.body.pwd   ;
-//     console.log(name+'--'+pwd) ;
-//     res.status(200).send(name+'--'+pwd) ;
-// });
+// 获取广场动态接口
+app.get('/square/news', square.getNews);
+
+// 处理/login的post请求
+app.post('/login',function(req,res){
+    name=req.body.name ;
+    pwd=req.body.pwd   ;
+    console.log(name+'--'+pwd) ;
+    res.status(200).send(name+'--'+pwd) ;
+});
 
 // 测试接口，获取所有学校信息
 app.get('/all/school', school.getAll);
-
 
 
 // 监考网mock数据接口
