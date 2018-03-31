@@ -23,7 +23,7 @@ function publishActivity (argument) {
 	var name = $('input[name=name]').val();
 	var time = $('input[name=time]').val();
 	var place = $('input[name=place]').val();
-	var timeLen = $('input[name=timeLen]').val();
+	var time_len = $('select[name=time_len]').val();
 	var label = '';
 	$.each($('.active'), function () {
 		if (label) {
@@ -32,7 +32,13 @@ function publishActivity (argument) {
 		else {
 			label += $(this).text();
 		}
-	})
-
-	// window.location.href = 'activity.html';
+	});
+	var note = $('input[name=note]').val();
+	if(!name || !time || !place || !time_len || !label){
+		alert("未全部填写完成");
+	}
+	else{
+		console.log(label);		
+		window.location.href = 'activity.html';
+	}
 }
