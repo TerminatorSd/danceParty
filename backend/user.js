@@ -1,10 +1,10 @@
 var mysql = require('../mysql')
 
+// 获取用户信息
 exports.getInfo = function (req,res) {
 
 	//id = req.body.id;
 	var id = 1;
-
 
 	var query = 'select * from user where id = ' + id;
 
@@ -22,9 +22,9 @@ exports.getInfo = function (req,res) {
 
 		res.end(JSON.stringify(result));
   })
-
 }
 
+// 更新用户信息
 exports.updateInfo = function(req, res){
 	//var name   = req.body.name,
 	//    school = req.body.school,
@@ -47,31 +47,32 @@ exports.updateInfo = function(req, res){
 		}
 		else{
 			var name   = 1,
-	            school = 1,
-	            label  = 1,
-	            gender = 1,
-	            phone  = 1;
-            var query1 = "update user set name = " + name +",school = " + 
-            school +",label = "+ label +", gender = " + gender +", phone = " 
-            + phone + " where id = " + id;
-            console.log(query1);
-            mysql.query(query1, {}, (err,data) =>{
-             var result = {};
-        
-	        	if(err) {
-	        		result.errMsg = err;
-	        	}
-	        	else {
-	        		result.code = 0;
-	        		result.errMsg = ' ';
-	        	}
-        
-	        	res.end(JSON.stringify(result));       
-            })
+	        school = 1,
+	        label  = 1,
+	        gender = 1,
+	        phone  = 1;
+      var query1 = "update user set name = " + name +",school = " + 
+      school +",label = "+ label +", gender = " + gender +", phone = " 
+      + phone + " where id = " + id;
+      console.log(query1);
+      mysql.query(query1, {}, (err,data) =>{
+       var result = {};
+  
+    	if(err) {
+    		result.errMsg = err;
+    	}
+    	else {
+    		result.code = 0;
+    		result.errMsg = ' ';
+    	}
+  
+    	res.end(JSON.stringify(result));       
+      })
 		}
 	})
 }
 
+// 注册
 exports.register = function(req, res){
 	var post = {
 		 name : "鸡威666",
