@@ -10,7 +10,6 @@ var school = require('./backend/school');
 
 var jsonData = require('./data.json')
 
-
 app.use(cookieParser());
 app.use(bodyParse.urlencoded({extended:false}));
 app.use(express.static('public'));
@@ -42,18 +41,6 @@ app.post('/login',function(req,res){
 
 // 测试接口，获取所有学校信息
 app.get('/all/school', school.getAll);
-
-
-// 监考网mock数据接口
-// 
-// 获取注册用户列表
-// app.get('/user/list', function (req, res) {
-//   var result = {};
-//   result.data = jkJson.userList;
-//   result.errcode = 0;
-//   result.errmsg = '';
-//   res.end(JSON.stringify(result));
-// })
 
 //用户模块1：获取用户信息
 app.get('/user/info', function (req, res) {
@@ -100,7 +87,6 @@ app.get('/activity/list', function (req, res) {
   res.end(JSON.stringify(result));
 });
 
-
 //活动模块4：获取活动详情
 app.get('/activity/detail', function(req,res) {
   var result = {};
@@ -110,24 +96,32 @@ app.get('/activity/detail', function(req,res) {
   res.end(JSON.stringify(result));
 });
 
-//活动模块5：取消活动
-// app.post('/cancel/activity', function(req,res) {
-//   var result = {},
-//   result.data = jsonData.activity;
-//   result.errcode = 0;
-//   result.errmsg = '';
-//   res.end(JSON.stringify(result));
-// })
+// 测试接口，获取所有学校信息
+app.get('/all/school', school.getAll);
 
-//活动模快6：召集党瑟
-// app.post('/call/dancer', function(req,res) {
-//   var result = {},
-//   result.data = jsonData.activityDetails;
-//   result.errcode = 0;
-//   result.errmsg = '';
-//   res.end(JSON.stringify(result));
-// })
+//获取用户信息接口
+app.get('/user/info', user.getInfo);
 
+//更新用户将信息接口
+app.post('/update/user/info',user.updateInfo);
+
+//发布活动模块
+app.post('/publish/activity',activity.publish);
+
+//获得活动消息模块
+app.get('/activity/detail',activity.detail);
+
+//参加活动模块
+app.post('/join/activity', activity.join);
+
+//获取活动列表接口
+app.get('/activity/list', activity.list);
+
+//取消活动模块
+app.post('/cancel/activity', activity.cancel);
+
+//用户注册模块
+app.post('/user/register', user.register);
 // 监听3000端口
 var server=app.listen(3000, function () {
 	console.log('listening at =====> http://127.0.0.1:3000......');
