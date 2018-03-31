@@ -38,3 +38,4 @@ function getStorage (name) {
 function setStorage (name, val) {
   localStorage.setItem(name, JSON.stringify(val));
 }
+

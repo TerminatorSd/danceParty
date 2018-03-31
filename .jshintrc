@@ -1,0 +1,15 @@
+{ 
+  "curly": true, 
+  "eqeqeq": false, 
+  "immed": true, 
+  "noarg": true, 
+  "noempty": true, 
+  "quotmark": "single", 
+  "undef": false, 
+  "unused": true, 
+  "node": true, 
+  "lastsemic": false,
+  "globals": {
+    "$": true
+  }
+} 

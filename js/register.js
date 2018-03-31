@@ -38,7 +38,7 @@ $(document).ready(function () {
 
 function getList () {
 	$.ajax({
-	    url: domain + '/activity/getlist',
+	    url: domain + '/all/schol',
 	    type: 'get',
 	    dataType: 'json',
 	    data: {},
