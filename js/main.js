@@ -31,10 +31,12 @@ function delCookie(name)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 
+//查找localStorage
 function getStorage (name) {
   return JSON.parse(localStorage.getItem(name));
 }
 
+//设置localStorage
 function setStorage (name, val) {
   localStorage.setItem(name, JSON.stringify(val));
 }
