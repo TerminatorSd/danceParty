@@ -55,5 +55,18 @@
 			"gender":"男",
 			"phone":"123456"
 		}
-	]
+	],
+	"activityList_pub":[
+		{
+			"name":"今晚打老虎"
+		},
+		{
+			"name":"老虎没打着"
+		}
+	],
+	"activityList_join":[
+		{
+			"name":"尬舞派对"
+		}
+ 	]
 }

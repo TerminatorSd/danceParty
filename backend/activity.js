@@ -1,5 +1,7 @@
 var mysql = require('../mysql')
 var moment = require('moment')
+
+// 发布活动
 exports.publish = function (req, res) {
 
 	//var name = req.body.name,
@@ -81,6 +83,7 @@ exports.publish = function (req, res) {
 	})
 }
 
+// 查看活动详情
 exports.detail = function(req, res){
 	var activity_id = 2;
 	var query = "select * from activity where id = "+activity_id;
@@ -150,7 +153,7 @@ exports.join = function(req, res){
 	})
 }
 
-
+// 获取活动列表
 exports.list = function(req, res){
 	var query = "select * from activity";
 	console.log(query);

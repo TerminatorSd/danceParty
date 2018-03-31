@@ -1,6 +1,7 @@
 
 var mysql = require('../mysql')
 
+// 获取学校列表
 exports.getAll = function (req, res) {
 
 	var query = 'select * from school';
