@@ -1,13 +1,14 @@
 $(document).ready(function(){
 	$.ajax({
-	    url: domain + '/activity/detail',
-	    type: 'get',
-	    dataType: 'json',
-	    data: {},
-	    success: function(data) {
-	        if(data.errcode == 0){
-	    		var urlId = location.search;
-	    		var tartgetId = urlId.split("=");
+    url: domain + '/activity/detail',
+    type: 'get',
+    dataType: 'json',
+    data: {},
+    success: function(data) {
+    	console.log(data);
+      if(data.errcode == 0){
+    		var urlId = location.search;
+    		var tartgetId = urlId.split("=");
 				$.each(data.data,function(i,activity){	//多个活动
 					if(activity.id == tartgetId[1]){
 						$('.time').text(activity.time);
@@ -20,14 +21,15 @@ $(document).ready(function(){
 						$('.join_dancer').text(activity.join_dancer);
 						$('.note').text(activity.note);
 					}
-	    		}) 
-	        }
-	        else
-	          alert("操作失败！");
-	    },
-	    error: function(err) {
-	      console.log(err);
-	    }
+	    	}) 
+     	}
+      else {
+        alert("操作失败！");
+      }
+    },
+    error: function(err) {
+      console.log(err);
+    }
 	});
 })
 

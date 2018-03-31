@@ -7,6 +7,8 @@ var bodyParse           = require('body-parser');
 var cookieParser        = require('cookie-parser');
 var square = require('./backend/square');
 var school = require('./backend/school');
+var user = require('./backend/user');
+var activity = require('./backend/activity');
 
 var jsonData = require('./data.json')
 
