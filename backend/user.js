@@ -3,15 +3,16 @@ var mysql = require('../mysql')
 // 获取用户信息
 exports.getInfo = function (req,res) {
 
-	//id = req.body.id;
-	var id = 1;
+	var id = req.body.id;
+	// var id = 1;
 
 	var query = 'select * from user where id = ' + id;
 
-  mysql.query(query, {}, (err, data) => {
-    var result = {};
+  	mysql.query(query, {}, (err, data) => {
+    	var result = {};
 
 		if(err) {
+			result.code = 1;
 			result.errMsg = err;
 		}
 		else {
