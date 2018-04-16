@@ -3,15 +3,16 @@ var mysql = require('../mysql')
 // 获取用户信息
 exports.getInfo = function (req,res) {
 
-	//id = req.body.id;
-	var id = 1;
-
+	var id = req.query.id;
+	// var id = 1;
+	//console.log(id);
 	var query = 'select * from user where id = ' + id;
 
-  mysql.query(query, {}, (err, data) => {
-    var result = {};
+  	mysql.query(query, {}, (err, data) => {
+    	var result = {};
 
 		if(err) {
+			result.code = 1;
 			result.errMsg = err;
 		}
 		else {
@@ -19,7 +20,7 @@ exports.getInfo = function (req,res) {
 			result.code = 0;
 			result.errMsg = '';
 		}
-
+		// console.log(result.code);
 		res.end(JSON.stringify(result));
   })
 }

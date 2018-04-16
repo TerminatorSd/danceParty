@@ -44,59 +44,59 @@ app.post('/login',function(req,res){
 // 测试接口，获取所有学校信息
 app.get('/all/school', school.getAll);
 
-//用户模块1：获取用户信息
-app.get('/user/info', function (req, res) {
-  var result = {};
-  result.data = jsonData.user;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-})
+// //用户模块1：获取用户信息
+// app.get('/user/info', function (req, res) {
+//   var result = {};
+//   result.data = jsonData.user;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// })
 
-//用户模块2：审核用户信息
-app.post('/update/user/info', function (req, res) {
-  var result = {};
-  result.data = jsonData.user;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-})
+// //用户模块2：审核用户信息
+// app.post('/update/user/info', function (req, res) {
+//   var result = {};
+//   result.data = jsonData.user;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// })
 
-//活动模块1：审核发布的活动
-app.post('/publish/activity', function (req, res) {
-  var result = {};
-  result.data = jsonData.activity;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-})
+// //活动模块1：审核发布的活动
+// app.post('/publish/activity', function (req, res) {
+//   var result = {};
+//   result.data = jsonData.activity;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// })
 
-//活动模块2：参与活动
-app.post('/join/activity', function (req, res) {
-  var result = {};
-  result.data = jsonData.activity;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-})
+// //活动模块2：参与活动
+// app.post('/join/activity', function (req, res) {
+//   var result = {};
+//   result.data = jsonData.activity;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// })
 
-//活动模块3：获取活动列表
-app.get('/activity/list', function (req, res) {
-  var result = {};
-  result.data = jsonData.activity;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-});
+// //活动模块3：获取活动列表
+// app.get('/activity/list', function (req, res) {
+//   var result = {};
+//   result.data = jsonData.activity;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// });
 
-//活动模块4：获取活动详情
-app.get('/activity/detail', function(req,res) {
-  var result = {};
-  result.data = jsonData.activityDetails;
-  result.errcode = 0;
-  result.errmsg = '';
-  res.end(JSON.stringify(result));
-});
+// //活动模块4：获取活动详情
+// app.get('/activity/detail', function(req,res) {
+//   var result = {};
+//   result.data = jsonData.activityDetails;
+//   result.errcode = 0;
+//   result.errmsg = '';
+//   res.end(JSON.stringify(result));
+// });
 
 // 测试接口，获取所有学校信息
 app.get('/all/school', school.getAll);

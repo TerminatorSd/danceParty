@@ -2,8 +2,6 @@
 
 $(document).ready(function () {
 
-	// getList();
-
 	// 下拉菜单选择
 	$('.hide-select').each(function (e) {
 		$(this).change(function () {
@@ -55,13 +53,24 @@ function getList () {
 	});
 }
 
+function upload(){
+	var file = $('.photo').find('input')[0].files[0];
+	//console.log(file);
+
+	var reader = new FileReader();
+	reader.onload = function(e){
+		var imgFile = e.target.result;
+		console.log(imgFile);
+		$('.photo-img').attr('src',imgFile);
+		$('.photo-img').attr('style','display:block');
+	}
+	reader.readAsDataURL(file);
+}
+
 // 点击下一步
 function nextStep () {
 
-	//setStorage('id', '1');
-
-	//alert(getStorage('id'));
-	
+		
 	var name = $('input[name = name]').val();
 	var identity = $('.chosen-identity').text();
 	var school = $('select[name = school] .right').text();
@@ -78,20 +87,42 @@ function nextStep () {
 	});
 
 	//头像图片
-	//var img
+	var img_url = $('.photo-img').attr('src');
 
 	//社会工作者无须选择学校，是学生但未选择学校要重新输入
 	if(!name || !gender || !phone || !label || (identity =="学生" && school=="选择你的大学")){
 		alert("未全部填写完成!");
 	}
 	else{
-		if(identity=="社会工作者"){
-			alert(name+','+identity+','+gender+','+phone+','+label);
-		}else{
-			alert(name+','+identity+','+school+','+gender+','+phone+','+label);
-		}
+		$.ajax({
+	    url: domain + '/update/user/info',
+	    type: 'post',
+	    dataType: 'json',
+	    data: {
+			name:name,
+			school: school,
+			label: label,
+			gender: gender,
+			phone: phone,
+			img_url: img_url	    	
+	    },
+	    success: function(data) {
+	        if(data.code == 0){
+	        	alert("注册成功！");
+	        	setStorage('user_id',data.id);
+				window.location.href = 'mine.html';
+	        }
+	        else
+	          alert("注册失败！");
+	    },
+	    error: function(err) {
+	      console.log(err);
+	    }
+	});
 		// 发送注册请求，成功后跳转
+		//setStorage('user_id', '1');
+		alert(getStorage('user_id'));
+		
 		// alert('sth');
-		window.location.href = 'activity.html';
 	}
 }

@@ -19,7 +19,9 @@ $(document).ready(function () {
 })
 
 function publishActivity (argument) {
-	// body...
+	//发布者id
+	var user_id = getStorage('user_id');
+	// 活动内容
 	var name = $('input[name=name]').val();
 	var time = $('input[name=time]').val();
 	var place = $('input[name=place]').val();
@@ -39,6 +41,32 @@ function publishActivity (argument) {
 	}
 	else{
 		console.log(label);		
-		window.location.href = 'activity.html';
+		$.ajax({
+			url: domain + '/publish/activity',
+			type: 'post',
+			data:{
+				user_id: user_id,
+				name: name,
+				time: time,
+				place: place,
+				time_len: time_len,
+				label: label,
+				note: note
+			},
+			dataType: 'json',
+			success:function(resource){
+				var data = JSON.parse(resource);
+				if(data.code == 0){
+					alert('发布成功');
+					window.location.href = 'activity.html';
+				}
+				else{
+					alert('发布失败');
+				}
+			},
+			error: function(err) {
+	    	console.log(err);
+	    }
+		})
 	}
 }
