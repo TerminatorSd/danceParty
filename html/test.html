@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Document</title>
+  <script src="../js/test.js"></script>
 </head>
 <body>
 
@@ -14,7 +15,26 @@
   </div>
 </div>
   
-<script>
+<!-- <script>
+  window.onload = function () {
+    console.log("i'm a lasagna hog".split("").reverse().join(""));
+
+    var foo = {n: 1};
+    var bar = foo;
+    foo.x = foo = {n: 2};
+    console.log(foo.x);
+
+    setTime();
+  }
+
+  function setTime(argument) {
+    console.log('one');
+    setTimeout(function() {
+      console.log('two');
+    }, 0);
+    console.log('three');
+  }
+
   function getThisElement (event) {
     var ev = event.target;
     var par = ev.parentNode;
@@ -32,23 +52,18 @@
     // console.log(event.target.tagName);
   }
 
-  var name = "The Window";
-
-　var object = {
+  function closuser () {
+    var name = "The Window";
+　  var object = {
 　　　　name : "My Object",
-
 　　　　getNameFunc : function(){
 　　　　　　return function(){
 　　　　　　　　return this.name;
 　　　　　　};
-
 　　　　}
-
 　　};
-
 　　alert(object.getNameFunc()());
-
-
-</script>
+  }
+</script> -->
 </body>
 </html>

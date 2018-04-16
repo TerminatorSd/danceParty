@@ -1,3 +1,5 @@
+'use strict'
+
 $(document).ready(function(){
 	$.ajax({
     url: domain + '/activity/detail',
@@ -32,7 +34,6 @@ $(document).ready(function(){
     }
 	});
 })
-
 
 function getTextByStatus(status) {
 	switch(status){
