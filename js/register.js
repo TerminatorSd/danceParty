@@ -60,7 +60,7 @@ function upload(){
 	var reader = new FileReader();
 	reader.onload = function(e){
 		var imgFile = e.target.result;
-		//console.log(imgFile);
+		console.log(imgFile);
 		$('.photo-img').attr('src',imgFile);
 		$('.photo-img').attr('style','display:block');
 	}

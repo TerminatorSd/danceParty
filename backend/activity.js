@@ -85,6 +85,7 @@ exports.publish = function (req, res) {
 
 // 查看活动详情
 exports.detail = function(req, res){
+	//console.log(req);
 	var activity_id = req.query.id;
 	var query = "select * from activity where id = "+activity_id;
 
@@ -170,7 +171,7 @@ exports.list = function(req, res){
 			result.code = 0;
 			result.errMsg = '';
 		}
-
+		//console.log(result.data);
 		res.end(JSON.stringify(result));
    })
 }
