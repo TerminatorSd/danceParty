@@ -10,16 +10,15 @@ $(document).ready(function () {
 			id: user_id
 		},
 		datatype : 'json',
-		success: function(data) {
+		success: function(resource) {
 			//用户已注册
-			console.log(data);
-			console.log(data.data);
+			var data = JSON.parse(resource);
 	        if(data.code == 0){	
-	        	var user = data.data;
-	        	$('header').empty();
-	        	var addHeader = "<img clss='pass' alt='' src='" + user.img_url + " />" +
-	        	"<p>" + user.name + "</p>";
-	        	$('header').append(addHeader);
+	        	var user = data.data[0];
+	        	$('header a').attr('href','my_info.html');
+	        	$('header a img').attr('src', '');
+	        	$('.pass').attr('src',user.img_url);
+	        	$('header p').text(user.name);
 	        }
 	        //未注册
 	        else{
