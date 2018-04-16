@@ -72,12 +72,13 @@
 
 		<div class="item item-photo">
 			<div class="clearfix">
-				<a>点击上传</a>
+				<a onclick="$('#img-input').click()">点击上传</a>
 				<span class="left">头像：</span>
 			</div>
 			
-			<img class="photo photo-img" src="">
 			<div class="photo photo-font">
+				<input type="file" id="img-input"  onchange="upload()" style="display: none"/>
+				<img class="photo photo-img" src="">
 				<img id="img" src="../img/register/card.png" alt="" />
 				<span>帅气的照骗</span>
 			</div>

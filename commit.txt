@@ -1,14 +1,9 @@
 3/18
-未做：
-数据库activity表需要添加 备注【note】。
-已做：
 1.更新data.json
 2.修改了publish_activity.html里面【活动地点】的input type。
 3.修改了publish_activity.html里面的一些input name。
 
 3/19
-未做：
-数据库user表需要添加 身份【type】,头像图片【img】
 已做：
 1.data.json去掉每行开头的+号；
 2.register.js 完成表单数据获取
@@ -24,12 +19,40 @@ user表添加了 身份类型【type】,将school的NULL属性更改为yes，可
 
 3/28
 数据库
-user表添加了 【imgurl】
+user表添加了头像图片 【img_url】
 js和html：
 1.完成activity.html和activity.js
 2.完成activity_detail.html和大部分activity_details.js，剩余“报名为写
 3.完善app.js
 
+
+4/6
+1.activity.js（前端和后端）已测试并修改成功，除活动详情页的报名
+2.完成register.js和register.html，传入的图片url为File类型的base64码，可直接读取。
+
 后端需要做：
 1.发布活动，传入参数增加 【note】
-2.注册用户，传入参数增加 【type】和【imgurl】
+2.注册用户，传入参数增加了 【type】和【img_url】,返回给前端的参数要多加一个id。
+3.活动详情页，【立即报名】要修改user_activity表，判断要报名的人是否已在数据库里，避免重复报名。
+
+4/13
+1.publish_activity入参为：第一行是用户id其余为activity活动内容
+{
+	user_id: user_id,
+	name: name,
+	time: time,
+	place: place,
+	time_len: time_len,
+	label: label,
+	note: note
+}
+2.my_activity里修改了header里的li以及css里的width更便于编程，原来为“		我发布的”，改为"我发布的"，去掉了制表符
+
+4/16
+1.my_activity.js完成
+2.my_activity_detail.js完成
+3.完成my_info
+总结后端需要修改：
+1.活动详情页的立即报名，即activity.join,需要修改user_activity表，以及判断要报名的人是否已在数据库里，避免重复报名
+2.发布活动，即activity.publish,增加了入参，详情为本文4/13的记录
+3.用户注册，user.updateInfo，需要增加入参，img_url

@@ -85,7 +85,8 @@ exports.publish = function (req, res) {
 
 // 查看活动详情
 exports.detail = function(req, res){
-	var activity_id = 2;
+	//console.log(req);
+	var activity_id = req.query.id;
 	var query = "select * from activity where id = "+activity_id;
 
 	mysql.query(query, {}, (err, data) => {
@@ -105,8 +106,10 @@ exports.detail = function(req, res){
 }
 
 exports.join = function(req, res){
-	var user_id = 2,
-	    activity_id = 1;
+	var user_id = req.body.user_id;
+	var activity_id = req.body.activity_id;
+	console.log(user_id + ' ' + activity_id);
+
     var name;
 	var query1 = "select name from user where id = " + user_id;
 	var result = {};
@@ -119,24 +122,24 @@ exports.join = function(req, res){
 		}
 		if(data[0]!=null) {
 			name = data[0].name;
-			result1.code = 123;
-			result1.errMsg = '查找user表成功';
+			result1.code = 0;
+			result1.errMsg = '';
 
 			result = result1;
 		    var query2 = "update activity set join_num=join_num+1 where id = "
 		    +activity_id+"; update activity set join_dancer=CONCAT(join_dancer, ',"
 		    +name+"') where id = "+activity_id+";";
-		    console.log(query2);
+		    //console.log(query2);
 		    mysql.query(query2, {}, (err, data) =>{
 		    	var result2 = {};
 		    	if(err){
 		    		result2.errMsg = err;
-		    		console.log("testing1");
+		    		//console.log("testing1");
 		    	}
 		    	else{
-		    		result2.code = 555;
-		    		result2.errMsg = '更新两个表成功';
-		    		console.log("testing2");
+		    		result2.code = 0;
+		    		result2.errMsg = '';
+		    		//console.log("testing2");
 		    	}
 		    	result.errMsg += result2.errMsg;
 		        result.code += result2.code;
@@ -156,7 +159,7 @@ exports.join = function(req, res){
 // 获取活动列表
 exports.list = function(req, res){
 	var query = "select * from activity";
-	console.log(query);
+	//console.log(query);
 	mysql.query(query, {}, (err, data) => {
 		var result = {};
 
@@ -168,7 +171,7 @@ exports.list = function(req, res){
 			result.code = 0;
 			result.errMsg = '';
 		}
-
+		//console.log(result.data);
 		res.end(JSON.stringify(result));
    })
 }

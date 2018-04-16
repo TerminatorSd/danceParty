@@ -1,5 +1,3 @@
-'use strict'
-
 $(document).ready(function(){
 	var urlId = location.search;
 	var targetId = urlId.split("=")[1];
@@ -11,15 +9,15 @@ $(document).ready(function(){
     	id : targetId
     },
     success: function(data) {
-    	//console.log(data);
-      	if(data.code == 0){
+    	console.log(data);
+      if(data.code == 0){
 			$.each(data.data,function(i,activity){	//多个活动
 				var time = new Date(activity.time).toLocaleString();
 				if(activity.id == targetId){
 					$('.name').text(activity.name);
 					$('.time').text(time);
-					$('.place').text(activity.place);
 					$('.time_len').text(activity.time_len);
+					$('.place').text(activity.place);
 					$('.status').text(getTextByStatus(activity.status));
 					$('.label').text(activity.label);
 					$('.pub_dancer').text(activity.pub_dancer);
@@ -39,6 +37,7 @@ $(document).ready(function(){
 	});
 })
 
+
 function getTextByStatus(status) {
 	if(status == "0"){
 	return "报名中";
@@ -49,29 +48,4 @@ function getTextByStatus(status) {
 	else{
 	return "未知";
 	}
-}
-
-function signUp(){
-	var urlId = location.search;
-	var activityId = urlId.split("=")[1];
-	$.ajax({
-		url: domain + '/join/activity',
-		type:'post',
-		dataType:'json',
-		data:{
-			user_id: getStorage('user_id'),
-    		activity_id: activityId
-		},
-		success: function(data) {
-	        if(data.code == 0){
-	         	alert("报名成功！");
-				window.location.href = 'activity.html';
-	        }
-	        else
-	          alert("报名失败！");
-	    },
-	    error: function(err) {
-	      console.log(err);
-	    }
-	})
 }

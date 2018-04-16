@@ -54,6 +54,15 @@
 			"label":"地板舞",
 			"gender":"男",
 			"phone":"123456"
+		},
+		{
+			"id":1,
+			"name":"劳华",
+			"type":"学生",
+			"school":"华南理工大学",
+			"label":"地板舞",
+			"gender":"男",
+			"phone":"18925830351"
 		}
 	],
 	"activityList_pub":[
