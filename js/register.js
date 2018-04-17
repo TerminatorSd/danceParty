@@ -95,34 +95,30 @@ function nextStep () {
 	}
 	else{
 		$.ajax({
-	    url: domain + '/update/user/info',
-	    type: 'post',
-	    dataType: 'json',
-	    data: {
-			name:name,
-			school: school,
-			label: label,
-			gender: gender,
-			phone: phone,
-			img_url: img_url	    	
-	    },
-	    success: function(data) {
-	        if(data.code == 0){
-	        	alert("注册成功！");
-	        	setStorage('user_id',data.id);
-				window.location.href = 'mine.html';
-	        }
-	        else
-	          alert("注册失败！");
-	    },
-	    error: function(err) {
-	      console.log(err);
-	    }
-	});
-		// 发送注册请求，成功后跳转
-		//setStorage('user_id', '1');
-		alert(getStorage('user_id'));
-		
-		// alert('sth');
+		    url: domain + '/update/user/info',
+		    type: 'post',
+		    dataType: 'json',
+		    data: {
+				name:name,
+				school: school,
+				label: label,
+				gender: gender,
+				phone: phone,
+				img_url: img_url	    	
+		    },
+		    success: function(data) {
+		        if(data.code == 0){
+		        	//console.log(data.data.id);
+		        	alert("注册成功！");
+		        	setStorage('user_id',data.data.id);
+					window.location.href = 'mine.html';
+		        }
+		        else
+		          alert("注册失败！");
+		    },
+		    error: function(err) { 
+		      console.log(err);
+		    }
+		});
 	}
 }
