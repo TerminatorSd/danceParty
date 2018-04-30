@@ -56,3 +56,8 @@ js和html：
 1.活动详情页的立即报名，即activity.join,需要修改user_activity表，以及判断要报名的人是否已在数据库里，避免重复报名
 2.发布活动，即activity.publish,增加了入参，详情为本文4/13的记录
 3.用户注册，user.updateInfo，需要增加入参，img_url
+
+4/17
+1.完善my_info.js和register.js的提交按钮
+后端：
+update/userInfo要返回用户数据以获取id便于前端设置localstorage

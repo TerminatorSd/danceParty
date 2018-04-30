@@ -56,8 +56,8 @@ app.get('/all/school', school.getAll);
 // //用户模块2：审核用户信息
 // app.post('/update/user/info', function (req, res) {
 //   var result = {};
-//   result.data = jsonData.user;
-//   result.errcode = 0;
+//   result.data = jsonData.user[1];
+//   result.code = 0;
 //   result.errmsg = '';
 //   res.end(JSON.stringify(result));
 // })
