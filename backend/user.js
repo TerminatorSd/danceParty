@@ -9,6 +9,8 @@ exports.getInfo = function (req,res) {
 	var id = req.query.user_id;
 	var query = 'select * from user where id = ' + id;
 
+  console.log(query);
+
   mysql.query(query, {}, (err, data) => {
     var result = {};
 
@@ -17,6 +19,7 @@ exports.getInfo = function (req,res) {
 			result.errMsg = err;
 		}
 		else {
+      console.log(data[0]);
       data[0].img_url = imgBaseUrl + data[0].img_url;
 			result.data = data[0];
 			result.code = 0;
