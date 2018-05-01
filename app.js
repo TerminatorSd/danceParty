@@ -140,6 +140,6 @@ app.post('/cancel/activity', activity.cancel);
 //用户注册模块
 app.post('/user/register', user.register);
 // 监听3000端口
-var server=app.listen(3000, function () {
-	console.log('listening at =====> http://127.0.0.1:3000......');
+var server=app.listen(3000, '0.0.0.0', function () {
+	console.log('listening at =====> http://0.0.0.0:3000......');
 }) ;
