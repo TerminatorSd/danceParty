@@ -21,7 +21,7 @@ var storage = multer.diskStorage({
     }
 })
 var upload = multer({ storage: storage });
-var imgBaseUrl = 'www.shaodongweb.top/danceParty/'
+var imgBaseUrl = '../'
 // var imgBaseUrl = '/Users/shaodong/myGit/danceParty/';
 
 app.use(cookieParser());

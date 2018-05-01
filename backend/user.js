@@ -1,5 +1,5 @@
 var mysql = require('../mysql')
-var imgBaseUrl = 'www.shaodongweb.top/danceParty/';
+var imgBaseUrl = '../';
 // var imgBaseUrl = '/Users/shaodong/myGit/danceParty/';
 
 
