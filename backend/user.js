@@ -1,6 +1,6 @@
 var mysql = require('../mysql')
-// var imgBaseUrl = 'wwww.shaodongweb.top/var/www/html/danceParty/';
-var imgBaseUrl = '/Users/shaodong/myGit/danceParty/';
+var imgBaseUrl = 'wwww.shaodongweb.top/var/www/html/danceParty/';
+// var imgBaseUrl = '/Users/shaodong/myGit/danceParty/';
 
 
 // 获取用户信息
