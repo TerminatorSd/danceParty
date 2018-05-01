@@ -43,7 +43,7 @@ function getUserInfo() {
       }	          
     },
     error: function(err) {
-      console.log(err);
+      console.log(JSON.stringify(err));
     }
 	})
 }
