@@ -105,6 +105,7 @@ function nextStep () {
 			label += $(this).text();
 		}
 	});
+	alert('before register');
 
 	//社会工作者无须选择学校，是学生但未选择学校要重新输入
 	if(!name || !gender || !phone || !label || (identity =="学生" && school=="选择你的大学")){

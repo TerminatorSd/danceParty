@@ -99,6 +99,8 @@ exports.updateInfo = function(req, res){
 exports.register = function(req, res){
 	var postData = req.body;
 	var query = "insert into user set ?";
+
+  console.log(query);
 	mysql.query(query, postData, (err, data) =>{
 		var result ={};
 		if(err){
