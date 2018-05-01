@@ -110,7 +110,7 @@ function nextStep () {
 		alert("未全部填写完成!");
 	}
 	else{
-		alert('before register');
+		alert(domain);
 		$.ajax({
 		    url: domain + '/user/register',
 		    type: 'post',
