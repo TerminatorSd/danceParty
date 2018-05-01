@@ -9,9 +9,9 @@ $(document).ready(function () {
 	if(!userId) {
     alert('please 先注册');
     location.href = 'register.html';
+  } else {
+		getActivityList(activityType);
   }
-
-	getActivityList(activityType);
 
 	//点击三种活动类型
 	$('header ul li').click(function (e) {
