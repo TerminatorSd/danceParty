@@ -105,25 +105,25 @@ function nextStep () {
 			label += $(this).text();
 		}
 	});
-	alert('before register');
 
 	//社会工作者无须选择学校，是学生但未选择学校要重新输入
 	if(!name || !gender || !phone || !label || (identity =="学生" && school=="选择你的大学")){
 		alert("未全部填写完成!");
 	}
 	else{
+		alert('before register');
 		$.ajax({
 		    url: domain + '/user/register',
 		    type: 'post',
 		    dataType: 'json',
 		    data: {
-				name:name,
-				type: identity,
-				school: school,
-				label: label,
-				gender: gender,
-				phone: phone,
-				img_url: imgUrl	    	
+					name:name,
+					type: identity,
+					school: school,
+					label: label,
+					gender: gender,
+					phone: phone,
+					img_url: imgUrl	    	
 		    },
 		    success: function(data) {
 	        if(data.code == 0){
@@ -135,6 +135,7 @@ function nextStep () {
 	          alert("注册失败！");
 		    },
 		    error: function(err) { 
+	        alert("err");
 		      console.log(err);
 		    }
 		});
