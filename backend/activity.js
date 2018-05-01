@@ -131,6 +131,8 @@ exports.join = function(req, res){
 // 获取活动列表
 exports.list = function(req, res){
 
+  console.log('/activity/list')
+
   var userId = req.query.user_id;
 
   // 判断是获取所有活动列表还是活动记录
