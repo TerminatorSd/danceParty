@@ -9,7 +9,8 @@ function getConn(){
         port:"3306",
         user:"root",
         password:"123456",  //你的mysql root密码
-        database:"dance_party" ,  //你的额数据库名称
+        database:"dance_party" ,  //你的数据库名称
+        charset:'UTF8_GENERAL_CI',
         multipleStatements: true   //多条mysql语句
       })
 }

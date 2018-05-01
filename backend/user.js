@@ -1,28 +1,50 @@
 var mysql = require('../mysql')
+// var imgBaseUrl = 'wwww.shaodongweb.top/var/www/html/danceParty/';
+var imgBaseUrl = '/Users/shaodong/myGit/danceParty/';
+
 
 // 获取用户信息
 exports.getInfo = function (req,res) {
 
-	var id = req.query.id;
-	// var id = 1;
-	//console.log(id);
+	var id = req.query.user_id;
 	var query = 'select * from user where id = ' + id;
 
-  	mysql.query(query, {}, (err, data) => {
-    	var result = {};
+  mysql.query(query, {}, (err, data) => {
+    var result = {};
 
 		if(err) {
 			result.code = 1;
 			result.errMsg = err;
 		}
 		else {
-			result.data = data;
+      data[0].img_url = imgBaseUrl + data[0].img_url;
+			result.data = data[0];
 			result.code = 0;
 			result.errMsg = '';
 		}
 		// console.log(result.code);
 		res.end(JSON.stringify(result));
   })
+}
+
+exports.uploadImg = function (req, res) {
+
+  // 读取上传的图片信息
+  var files = req.files;
+
+  // 设置返回结果
+  var result = {};
+  if(!files[0]) {
+    result.code = 1;
+    result.errMsg = '上传失败';
+  } else {
+    result.code = 0;
+    result.data = {
+      url: files[0].path
+    }
+    result.errMsg = '上传成功';
+  }
+  res.end(JSON.stringify(result));
 }
 
 // 更新用户信息
@@ -75,21 +97,19 @@ exports.updateInfo = function(req, res){
 
 // 注册
 exports.register = function(req, res){
-	var post = {
-		 name : "鸡威666",
-		 school : "华工",
-		 label : "地板舞",
-		 gender : "男",
-		 phone : 15626434077
-	};
+	var postData = req.body;
 	var query = "insert into user set ?";
-	mysql.query(query, post, (err, data) =>{
+	mysql.query(query, postData, (err, data) =>{
 		var result ={};
 		if(err){
+      result.code = 1;
 			result.errMsg = err;
 		}
 		else{
-			result.code = 222;
+      result.data = {
+        id: data.insertId
+      }
+			result.code = 0;
 			result.errMsg = '注册成功';
 		}
 		res.end(JSON.stringify(result));

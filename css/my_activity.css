@@ -98,7 +98,7 @@ header {
       display: inline-block;
       height: 10.8vw;
       line-height: 10.8vw;
-      width: 19vw;
+      width: 20vw;
       margin: 0 6.6vw;
       text-align: center; }
       header ul li.active {
@@ -110,6 +110,7 @@ header {
     display: block;
     color: #373737;
     height: 14vw;
+    margin-top: 2vw;
     background-color: white;
     border-bottom: 0.2vw solid #E8E8EA; }
     .exam-list .item span {

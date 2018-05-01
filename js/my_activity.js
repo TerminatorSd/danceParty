@@ -1,100 +1,48 @@
+'use strict';
+
+var userId = getStorage("userId");
+// 0 全部活动 1 我发布的 2 我参加的
+var activityType = 0;
 
 $(document).ready(function () {
-	var user_id = getStorage("user_id");
-	//console.log(user_id);
 
-	showList(user_id,$('.active').text());
+	getActivityList(activityType);
 
 	//点击三种活动类型
-	$('header ul li').click(function () {
+	$('header ul li').click(function (e) {
 		$(this).addClass('active').siblings().removeClass('active');
-		// console.log($('.active').text());
-		showList(user_id,$('.active').text());
+
+		// 重新获取活动列表
+		activityType = $("header ul li").index(this);
+		getActivityList(activityType);
 	})
 })
 
-function showList(user_id,str){
-	var user_name='';
-	//通过用户id获取用户名
-	$.ajax({
-		url: domain + '/user/info',
-		type: 'get',
-		dataType: 'json',
-		data:{
-			id:user_id
-		},
-		success:function(data){
-			user_name = data.data[0].name;
-			//console.log(user_name);
-		},
-		error:function(err){
-			console.log(err);
-		}
-	});
-
+function getActivityList(activityType){
+	// 通过用户id获取活动列表
 	$.ajax({
 	    url: domain + '/activity/list',
 	    type: 'get',
 	    dataType: 'json',
-	    data: {},
+	    data: {
+	    	user_id: userId,
+	    	activity_type: activityType
+	    },
 	    success: function(data) {
-	        if(data.code == 0){
-	            // 数据获取成功
-	            $('.exam-list').empty();
-	            if(str=='全部'){
-	            	$.each(data.data, function(i,activity){
-	            		var addActivity='';
-	            		addActivity += '<a class="item" href="my_activity_detail.html' + '?activity_id=' + 
-		            		activity.id + '" >' + '<img src="../img/exam/right-arrow.png" alt="" />' + 
-		            		'<span>' + activity.name + '</span>' + '</a>';
-	            	
-		            	$('.exam-list').append(addActivity);
-		            })
-
-	            	//为第一个活动添加item-first类，用于布局
-		            $('.exam-list a:first').addClass('item-first');
-	            	
-	            }
-	            else if (str == '我发布的'){
-	            	$.each(data.data, function(i,activity){
-	            		var addActivity='';
-	            		//判断本用户是否是活动发布者
-	            		if(activity.pub_dancer == user_name){
-		            		addActivity += '<a class="item" href="my_activity_detail.html' + '?activity_id=' + 
-		            		activity.id + '" >' + '<img src="../img/exam/right-arrow.png" alt="" />' + 
-			            		'<span>' + activity.name + '</span>' + '</a>';
-	            		}
-	            	
-		            	$('.exam-list').append(addActivity);
-		            })
-
-	            	//为第一个活动添加item-first类，用于布局
-		            $('.exam-list a:first').addClass('item-first');
-	            }
-	            else {
-					$.each(data.data, function(i,activity){
-	            		var addActivity='';
-	            		//判断本用户是否在活动参与者中
-	            		if(activity.pub_dancer == user_name){
-		            		addActivity += '<a class="item" href="my_activity_detail.html' + '?activity_id=' + 
-		            		activity.id + '" >' + '<img src="../img/exam/right-arrow.png" alt="" />' + 
-			            		'<span>' + activity.name + '</span>' + '</a>';
-	            		}
-	            	
-		            	$('.exam-list').append(addActivity);
-		            })
-
-	            	//为第一个活动添加item-first类，用于布局
-		            $('.exam-list a:first').addClass('item-first');
-	            }
-
-	        }
-	        else
-	            alert("get userlists failed!");
+	    	if (data.code == 0) {
+	    		var myStr='';
+		    	$.each(data.data, function(i, activity){
+	      		myStr += '<a class="item" href="my_activity_detail.html?activity_id=' + activity.id + '" >' 
+	      		      + '<img src="../img/exam/right-arrow.png" alt="" />' 
+	      		      + '<span>' + activity.name + '</span>' + '</a>';
+	        })
+	        $('.exam-list').html(myStr);
+	    	}
+        else
+            alert("获取活动列表失败");
 	    },
 	    error: function(err) {
 	        console.log(err);
 	    }
 	});
-
 }

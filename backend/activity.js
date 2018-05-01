@@ -4,91 +4,55 @@ var moment = require('moment')
 // 发布活动
 exports.publish = function (req, res) {
 
-	//var name = req.body.name,
-    //    time = req.body.time,
-    //    place = req.body.place,
-    //    time_len = req.body.time_len,
-    //    phone = req.body.phone,
-    //    label = req.body.label,
-    //    note = req.body.note;
-    //time1= moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
-    create_time1= moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
+  // 更新活动表
+  var postData = req.body;
+  var id = postData.user_id;
+  var queryName = 'select * from user where id = ' + id;
+  var nowTime= moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
 
-    var post1 = {
-    	 name : 1,
-         time : "2018-03-18 16:18:11",
-         place : 1,
-         time_len : 1,
-         join_num : 1,
-         label : 1,
-         status : 1,
-         join_dancer : 1, 
-         pub_dancer : 1,
-         create_time : create_time1
-    };
+  // 操作用户表 先根据用户id 获取用户名
+  mysql.query(queryName, {}, (err, data) => {
+    var result = {};
+    if(err) {
+      result.code = 1;
+      result.errMsg = err;
+    }
+    else {
+      // 状态为0 表示已发布
+      postData.status = 0;
+      postData.pub_dancer = data[0].name;
+      postData.join_num = 1;
+      postData.join_dancer = data[0].name;
+      postData.pub_dancer_id = id;
+      postData.create_time = nowTime;
+      delete postData['user_id'];
+      var insertActivity = "insert into activity set ?";
 
-    var post2 = {
-    	 user_id : 1,
-    	 activity_id : 1,
-    	 pub_status : 1,
-    	 join_status : 1
-    };
-
- //    var id = 11,
- //        name = 1,
- //        time = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
- //        place =1, 
- //        time_len = 1,
- //        join_num = 1,
- //        phone = 1,
- //        label = 1,
- //        status = 1,
- //        join_dancer = 1,
- //        pub_dancer = 1,
- //        create_time = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
- //        note = 1;
-
- //    // time = "2018-03-18 16:18:11";
- //    // create_time = "2018-03-18 16:18:11";
-
-	// var query = "insert into activity (id, name, label, time, time_len, join_num, pub_dancer, status, join_dancer, place, create_time) values (" +
-	// id + ","+name + ","+label + ","+ time + ","+time_len + ","+join_num + ","+pub_dancer + ","+status + ","+join_dancer + ","+place + ","+create_time+")";
-    var query1 = "insert into activity set ?";
-    var query2 = "insert into user_activity set ?";
-    var result;
-	mysql.query(query1, post1, (err, data) => {
-		var result1 = {};
-
-		if(err) {
-			result1.errMsg = err;
-		}
-		else {
-			result1.code = 123;
-			result1.errMsg = '插入1成功';
-		}
-		result = result1;
-	})
-	mysql.query(query2, post2, (err,data) =>{
-		var result2 = {};
-		if(err){
-			result2.errMsg = err;
-		}
-		else{
-			result2.code = 321;
-			result2.errMsg = ',插入2成功';         
-		}
-		result.errMsg += result2.errMsg;
-		result.code += result2.code;
-		res.end(JSON.stringify(result));
-	})
+      // 向活动表插入数据
+      mysql.query(insertActivity, postData, (err, data) => {
+        // console.log(postData);
+        if(err) {
+          result.code = 1;
+          result.errMsg = err;
+        } else {
+          result.code = 0;
+          result.errMsg = '操作成功';
+        }
+        // res.end 的位置要放在最里层query 操作中
+        res.end(JSON.stringify(result));
+      })
+    }
+  })
 }
 
 // 查看活动详情
 exports.detail = function(req, res){
 	//console.log(req);
-	var activity_id = req.query.id;
-	var query = "select * from activity where id = "+activity_id;
+	var activityId = req.query.activity_id;
+  var userId = req.query.user_id;
+	var query = "select a.*, b.join_status from activity as a left join user_activity as b on a.id = b.activity_id and b.user_id = " + userId + " where a.id = " + activityId;
 
+  console.log(query);
 	mysql.query(query, {}, (err, data) => {
 		var result = {};
 
@@ -106,63 +70,90 @@ exports.detail = function(req, res){
 }
 
 exports.join = function(req, res){
-	var user_id = req.body.user_id;
-	var activity_id = req.body.activity_id;
-	console.log(user_id + ' ' + activity_id);
 
-    var name;
-	var query1 = "select name from user where id = " + user_id;
-	var result = {};
+  // 需要更新两张表，活动表和用户活动表
+  var userId = req.body.user_id;
+  var activityId = req.body.activity_id;
 
-	mysql.query(query1, {}, (err, data) =>{
-		var result1 = {};
-		console.log(data[0].name);
-		if(err) {
-			result1.errMsg = err;
-		}
-		if(data[0]!=null) {
-			name = data[0].name;
-			result1.code = 0;
-			result1.errMsg = '';
+  // 先更新用户活动表
+  var postDataActivity = req.body;
+  postDataActivity.pub_status = 1;
+  postDataActivity.join_status = 1;
+  var insertUserActivity = 'insert into user_activity set ?';
+  var result = {};
 
-			result = result1;
-		    var query2 = "update activity set join_num=join_num+1 where id = "
-		    +activity_id+"; update activity set join_dancer=CONCAT(join_dancer, ',"
-		    +name+"') where id = "+activity_id+";";
-		    //console.log(query2);
-		    mysql.query(query2, {}, (err, data) =>{
-		    	var result2 = {};
-		    	if(err){
-		    		result2.errMsg = err;
-		    		//console.log("testing1");
-		    	}
-		    	else{
-		    		result2.code = 0;
-		    		result2.errMsg = '';
-		    		//console.log("testing2");
-		    	}
-		    	result.errMsg += result2.errMsg;
-		        result.code += result2.code;
-		        res.end(JSON.stringify(result));
-		    })
-		}
-		else{
-			result.code = 233;
+  // 向用户活动表插入数据
+  mysql.query(insertUserActivity, postDataActivity, (err, data) => {
+    if(err) {
+      result.code = 1;
+      result.errMsg = err;
+    } else {
+
+      // 成功后更新活动表
+      var name;
+      var queryName = "select name from user where id = " + userId;
+
+      // 先获取用户名
+      mysql.query(queryName, {}, (err, data) =>{
+        if(err) {
+          result.code = 1;
+          result.errMsg = err;
+        } else {
+          if(data[0] == null) {
+            result.code = 1;
             result.errMsg = '查找user表失败';
-            res.end(JSON.stringify(result));
-		}
-		
+          }
+          else{
+            name = data[0].name;
+            var queryActivity = "update activity set join_num=join_num+1 where id = "
+                              + activityId +"; update activity set join_dancer=CONCAT(join_dancer, ',"
+                              + name+"') where id = " + activityId + ";";
 
-	})
+            // 更新活动表参与人数和参与人姓名
+            mysql.query(queryActivity, {}, (err, data) =>{
+              if(err){
+                result.code = 1;
+                result.errMsg = err;
+              }
+              else{
+                result.code = 0;
+                result.errMsg = '操作成功';
+              }
+              res.end(JSON.stringify(result));
+            })
+          }
+        }
+      })
+    }
+  }) 
 }
 
 // 获取活动列表
 exports.list = function(req, res){
-	var query = "select * from activity";
-	//console.log(query);
-	mysql.query(query, {}, (err, data) => {
-		var result = {};
 
+  var userId = req.query.user_id;
+
+  // 判断是获取所有活动列表还是活动记录
+  // 0 个人参与的所有活动 1 个人发布的所有活动 2 个人参加的所有活动
+  var type = req.query.activity_type;
+  var queryActivityList = '';
+  if (type === undefined) {
+    queryActivityList = "select a.*, b.join_status from activity as a left join user_activity as b on a.id = b.activity_id and b.user_id = " + userId + " order by a.status, b.join_status";
+  } else {
+    if (type == 0) {
+      queryActivityList = "select a.*, b.join_status from activity as a left join user_activity as b on a.id = b.activity_id where b.user_id = " + userId + " order by a.status, b.join_status";
+    } else if (type == 1) {
+      queryActivityList = "select a.*, b.join_status from activity as a left join user_activity as b on a.id = b.activity_id where a.pub_dancer_id = " + userId + " and b.user_id = " + userId + " order by a.status, b.join_status";
+    } else {
+      queryActivityList = "select a.*, b.join_status from activity as a left join user_activity as b on a.id = b.activity_id where a.pub_dancer_id != " + userId + " and b.user_id = " + userId + " order by a.status, b.join_status";
+    }
+  }
+
+  console.log(queryActivityList);
+
+  // 左连接查询活动表和用户活动表, 报名中的活动放在前面
+	mysql.query(queryActivityList, {}, (err, data) => {
+		var result = {};
 		if(err) {
 			result.errMsg = err;
 		}
@@ -171,28 +162,62 @@ exports.list = function(req, res){
 			result.code = 0;
 			result.errMsg = '';
 		}
-		//console.log(result.data);
 		res.end(JSON.stringify(result));
    })
 }
 
 exports.cancel = function(req, res){
-	var activity_id = 2;
-	var query = "";
-	console.log(query);
-	mysql.query(query, {}, (err, data) => {
-		var result = {};
 
+  // 取消报名更新活动表和用户活动表
+  var userId = req.body.user_id;
+  var activityId = req.body.activity_id;
+
+  var result = {};
+  var updateUserActivity = 'update user_activity set join_status = 2 where user_id = ' + userId + ' and activity_id = ' + activityId;
+
+  // 更新用户活动表，修改join_status 字段值
+	mysql.query(updateUserActivity, {}, (err, data) => {
 		if(err) {
+      result.code = 1;
 			result.errMsg = err;
 		}
 		else {
-			result.data = data;
-			result.code = 0;
-			result.errMsg = '';
-		}
+			// 成功后更新活动表
+      var name;
+      var queryName = "select name from user where id = " + userId;
 
-		res.end(JSON.stringify(result));
+      // 先获取用户名
+      mysql.query(queryName, {}, (err, data) =>{
+        if(err) {
+          result.code = 1;
+          result.errMsg = err;
+        } else {
+          if(data[0] == null) {
+            result.code = 1;
+            result.errMsg = '查找user表失败';
+          }
+          else{
+            name = data[0].name;
+            var replaceStr = ',' + name;
+            var queryActivity = "update activity set join_num = join_num - 1 where id = "+ activityId + "; "
+                              + "update activity set join_dancer = replace(join_dancer, '" + replaceStr + "', '');"
+
+            console.log(queryActivity);
+            // 更新活动表参与人数和参与人姓名
+            mysql.query(queryActivity, {}, (err, data) =>{
+              if(err){
+                result.code = 1;
+                result.errMsg = err;
+              }
+              else{
+                result.code = 0;
+                result.errMsg = '操作成功';
+              }
+              res.end(JSON.stringify(result));
+            })
+          }
+        }
+      })
+		}
    })
 }
-//console.log("testing");

@@ -29,7 +29,7 @@
 			
 		</div>
 		<div class="item">
-			<select name="school" id="" class="hide-select">
+			<select name="school" id="school" class="hide-select">
 				<option value="">已毕业</option>
 				<option value="">华工</option>
 				<option value="">中大</option>
@@ -77,10 +77,12 @@
 			</div>
 			
 			<div class="photo photo-font">
-				<input type="file" id="img-input"  onchange="upload()" style="display: none"/>
 				<img class="photo photo-img" src="">
+				<form id="img_form" action="" method="POST" enctype="multipart/form-data">
+					<input name="img" type="file" id="img-input" onchange="changeImg()" style="display: none"/>
+				</form>
 				<img id="img" src="../img/register/card.png" alt="" />
-				<span>帅气的照骗</span>
+				<span class="zhaopian">帅气的照骗</span>
 			</div>
 		</div>
 
@@ -93,6 +95,7 @@
 	</footer>
 	
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../js/jquery.form.js"></script>
 	<script src="../js/main.js"></script>
 	<script src="../js/register.js"></script>
 </body>

@@ -1,18 +1,21 @@
 $(document).ready(function(){
+
+  var userId = getStorage('userId');
 	$.ajax({
     url: domain + '/activity/list',
     type: 'get',
     dataType: 'json',
-    data: {},
+    data: {
+      user_id: userId
+    },
     success: function(data) {
     	console.log(data);
       if(data.code == 0){
-
         //动获取数据加载页面
 				$('.body').empty();	
 				$.each(data.data,function(i,activity){	//多个活动
           var time = new Date(activity.time).toLocaleString();
-          console.log(activity.status);
+          // console.log(activity.status);
 	        var newActivityHtml = '<a id=' + activity.id ;
 	        if(activity.status == 0) {
 	        	newActivityHtml += ' href="activity_detail.html?id=' + activity.id + '" class="test-item">';
@@ -26,15 +29,10 @@ $(document).ready(function(){
           	'<p class="test-num">地点：<span class="place"></span>'+ activity.place + '</p>'+
           	'<p class="test-num">标签：<span class="label"></span>'+ activity.label + '</p>'+
           	'<p class="test-num">当前状态：<span class="status ';
-          // if 和 else 尽量都用{}包围
-        	if(activity.status == 0) {
-        		newActivityHtml +='text-blue';
-        	}
-        	else {
-        		newActivityHtml +='text-red';
-        	}
+        	
+          newActivityHtml += getColorByStatus(activity.status, activity.join_status);
 
-        	newActivityHtml += ' ">' + getTextByStatus(activity.status) + '</span></p>' + '</a>';
+        	newActivityHtml += ' ">' + getTextByStatus(activity.status, activity.join_status) + '</span></p>' + '</a>';
 
       		$('.body').append(newActivityHtml);
 		          	
@@ -50,14 +48,34 @@ $(document).ready(function(){
 	});
 })
 
-function getTextByStatus(status) {
+function getTextByStatus(status, join_status) {
     if(status == "0"){
-      return "报名中";
-    }
-    else if (status == "1"){
+      if(join_status == null) {
+        return "报名中";
+      } else if(join_status == 1) {
+        return "已报名";
+      } else {
+        return "不可再报名";
+      }
+    } else if (status == "1"){
       return "已结束"
-    }
-    else{
+    } else {
       return "未知";
+    }
+}
+
+function getColorByStatus(status, join_status) {
+    if(status == "0"){
+      if(join_status == null) {
+        return "text-blue";
+      } else if(join_status == 1) {
+        return "text-green";
+      } else {
+        return "text-orange";
+      }
+    } else if (status == "1"){
+      return "text-red"
+    } else {
+      return "text-blue";
     }
 }

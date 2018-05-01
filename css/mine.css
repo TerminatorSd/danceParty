@@ -107,32 +107,37 @@ header {
       float: left;
       margin-top: 8.9vw;
       margin-left: 7vw;
+      border-radius: 7.2vw;
       /*border: .2vw solid black;*/ }
-    header a p {
-      width: 62vw;
-      margin-left: 6vw;
+    header a .center-content {
       float: left;
-      overflow: hidden; }
-      header a p.name {
-        font-size: 6.4vw;
-        font-weight: bold;
-        margin-top: 7.3vw; }
-        header a p.name span.role {
+      width: 60vw;
+      margin-left: 4vw; }
+      header a .center-content span {
+        overflow: hidden; }
+        header a .center-content span.name {
+          float: left;
+          font-size: 6.4vw;
+          font-weight: bold;
+          margin-top: 7.3vw; }
+        header a .center-content span.role {
+          float: left;
+          margin-top: 9vw;
           font-size: 2.9vw;
           color: #2FBDB3;
           padding: .4vw 1.4vw;
-          margin-left: 1.4vw;
+          margin-left: 2.4vw;
           border: 0.2vw solid #2FBDB3;
           border-radius: 1.3vw; }
-      header a p.school {
-        color: #747474; }
-      header a p.unregister {
-        font-size: 5vw;
-        line-height: 30.4vw;
-        color: #373737; }
-        header a p.unregister span {
-          color: #2FBDB3;
-          text-decoration: underline; }
+        header a .center-content span.school {
+          color: #747474; }
+        header a .center-content span.unregister {
+          font-size: 5vw;
+          line-height: 30.4vw;
+          color: #373737; }
+          header a .center-content span.unregister span {
+            color: #2FBDB3;
+            text-decoration: underline; }
 
 .list .list-item {
   display: block;

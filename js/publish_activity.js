@@ -1,4 +1,5 @@
 
+'use strict';
 
 $(document).ready(function () {
 	
@@ -19,8 +20,10 @@ $(document).ready(function () {
 })
 
 function publishActivity (argument) {
+
 	//发布者id
-	var user_id = getStorage('user_id');
+	var userId = getStorage('userId');
+
 	// 活动内容
 	var name = $('input[name=name]').val();
 	var time = $('input[name=time]').val();
@@ -36,16 +39,16 @@ function publishActivity (argument) {
 		}
 	});
 	var note = $('input[name=note]').val();
+
+	// 空值检测
 	if(!name || !time || !place || !time_len || !label){
 		alert("未全部填写完成");
-	}
-	else{
-		console.log(label);		
+	} else{
 		$.ajax({
 			url: domain + '/publish/activity',
 			type: 'post',
 			data:{
-				user_id: user_id,
+				user_id: userId,
 				name: name,
 				time: time,
 				place: place,
@@ -54,10 +57,9 @@ function publishActivity (argument) {
 				note: note
 			},
 			dataType: 'json',
-			success:function(resource){
-				var data = JSON.parse(resource);
+			success:function(data){
 				if(data.code == 0){
-					alert('发布成功');
+					alert('发布成功!');
 					window.location.href = 'activity.html';
 				}
 				else{

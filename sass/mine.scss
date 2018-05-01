@@ -26,37 +26,44 @@ header {
 				float: left;
 				margin-top: 8.9vw;
 				margin-left: 7vw;
+				border-radius: 7.2vw;
 				/*border: .2vw solid black;*/
 			}
 		}
-		p {
-			width: 62vw;
-			margin-left: 6vw;
+
+		.center-content {
 			float: left;
-			overflow: hidden;
-			&.name {
-				font-size: 6.4vw;
-				font-weight: bold;
-				margin-top: 7.3vw;
-				span.role {
+			width: 60vw;
+			margin-left: 4vw;
+			span {
+				overflow: hidden;
+				&.name {
+					float: left;
+					font-size: 6.4vw;
+					font-weight: bold;
+					margin-top: 7.3vw;
+				}
+				&.role {
+					float: left;
+					margin-top: 9vw;
 					font-size: 2.9vw;
 					color: $test-img-green;
 					padding: .4vw 1.4vw;
-					margin-left: 1.4vw;
+					margin-left: 2.4vw;
 					border: .2vw solid $test-img-green;
 					border-radius: 1.3vw;
 				}
-			}
-			&.school {
-				color: $exam-grey-font;
-			}
-			&.unregister {
-				font-size: 5vw;
-				line-height: 30.4vw;
-				color: $common-black;
-				span {
-					color: $test-img-green;
-					text-decoration: underline;
+				&.school {
+					color: $exam-grey-font;
+				}
+				&.unregister {
+					font-size: 5vw;
+					line-height: 30.4vw;
+					color: $common-black;
+					span {
+						color: $test-img-green;
+						text-decoration: underline;
+					}
 				}
 			}
 		}

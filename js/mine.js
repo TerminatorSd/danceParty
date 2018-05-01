@@ -1,34 +1,33 @@
 'use strict';
 
-$(document).ready(function () {
-	var user_id = getStorage('user_id');
-	//console.log(user_id);
-	$.ajax({
-    	url: domain + '/user/info',
-		type: 'get',
-		data : {
-			id: user_id
-		},
-		datatype : 'json',
-		success: function(resource) {
-			//用户已注册
-			var data = JSON.parse(resource);
-	        if(data.code == 0){	
-	        	var user = data.data[0];
-	        	$('header a').attr('href','my_info.html');
-	        	$('header a img').attr('src', '');
-	        	$('.pass').attr('src',user.img_url);
-	        	$('header p').text(user.name);
-	        }
-	        //未注册
-	        else{
-	        	$('.list').empty();
+var userId = getStorage('userId');
 
-	        }	          
-	    },
-	    error: function(err) {
-	      console.log(err);
-	    }
-	    
-	})
+$(document).ready(function () {
+
+	// 判断是否已经注册
+	if (userId) {
+		$('.unregister').hide();
+		$('header a').attr('href', 'my_info.html');
+		$.ajax({
+    	url: domain + '/user/info',
+			type: 'get',
+			data : {
+				user_id: userId
+			},
+			datatype : 'json',
+			success: function(data) {
+				data = JSON.parse(data);
+				//用户已注册
+				$('.pass').attr('src', data.data.img_url);
+				$('.name').text(data.data.name);
+				$('.role').text(data.data.type);
+				$('.school').text(data.data.school);
+		   }
+		});
+	} else {
+		// 显示注册按钮
+		$('.name').hide();
+		$('.role').hide();
+		$('.school').hide();
+	}
 })

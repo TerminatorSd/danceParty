@@ -112,10 +112,18 @@ body {
 			border: .2vw solid $test-list-grey;
 			border-radius: 2.6vw;
 			img {
-				width: 30.9vw;
-				height: 28vw;
-				margin-top: 15vw;
-				margin-left: 28vw;
+				&#img {
+					width: 30.9vw;
+					height: 28vw;
+					margin-top: 15vw;
+					margin-left: 28vw;
+				}
+				&.photo-img {
+					width: 87vw;
+					height: 58vw;
+					margin-left: 0;
+					display: none;
+				}
 			}
 			span {
 				display: block;
@@ -123,9 +131,6 @@ body {
 				color: $info-grey-font;
 				margin: 0 auto;
 			}
-		}
-		.photo-img {
-			display: none;
 		}
 	}
 }

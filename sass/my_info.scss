@@ -111,21 +111,6 @@ body {
 			margin-left: 6.5vw;
 			border: .2vw solid $test-list-grey;
 			border-radius: 2.6vw;
-			img {
-				width: 30.9vw;
-				height: 28vw;
-				margin-top: 15vw;
-				margin-left: 28vw;
-			}
-			span {
-				display: block;
-				text-align: center;
-				color: $info-grey-font;
-				margin: 0 auto;
-			}
-		}
-		.photo-img {
-			display: none;
 		}
 	}
 }

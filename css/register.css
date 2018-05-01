@@ -176,18 +176,21 @@ body {
     margin-left: 6.5vw;
     border: 0.2vw solid #E8E8EA;
     border-radius: 2.6vw; }
-    .info .item-photo .photo img {
+    .info .item-photo .photo img#img {
       width: 30.9vw;
       height: 28vw;
       margin-top: 15vw;
       margin-left: 28vw; }
+    .info .item-photo .photo img.photo-img {
+      width: 87vw;
+      height: 58vw;
+      margin-left: 0;
+      display: none; }
     .info .item-photo .photo span {
       display: block;
       text-align: center;
       color: #959595;
       margin: 0 auto; }
-  .info .item-photo .photo-img {
-    display: none; }
 
 footer {
   position: fixed;

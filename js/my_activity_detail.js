@@ -1,19 +1,23 @@
+'use strict';
+
+var userId = getStorage("userId");
+var activityId = location.search.split("=")[1];
+
 $(document).ready(function(){
-	var urlId = location.search;
-	var targetId = urlId.split("=")[1];
 	$.ajax({
     url: domain + '/activity/detail',
     type: 'get',
     dataType: 'json',
     data: {
-    	id : targetId
+    	user_id : userId,
+      activity_id: activityId
     },
     success: function(data) {
     	console.log(data);
       if(data.code == 0){
 			$.each(data.data,function(i,activity){	//多个活动
 				var time = new Date(activity.time).toLocaleString();
-				if(activity.id == targetId){
+				if(activity.id == activityId){
 					$('.name').text(activity.name);
 					$('.time').text(time);
 					$('.time_len').text(activity.time_len);
@@ -36,7 +40,6 @@ $(document).ready(function(){
     }
 	});
 })
-
 
 function getTextByStatus(status) {
 	if(status == "0"){
