@@ -5,7 +5,7 @@ var mysql = require("mysql");
 //连接本地数据库
 function getConn(){
     return mysql.createConnection({
-        host:"localhost",
+        host:"39.108.163.91",
         port:"3306",
         user:"root",
         password:"123456",  //你的mysql root密码
