@@ -1,7 +1,5 @@
 'use strict';
 
-setStorage('userId', 7);
-
 var userId = getStorage('userId');
 
 $(document).ready(function(){
