@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 03:03 AM
+-- Generation Time: May 01, 2018 at 08:57 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.14
 
@@ -43,21 +43,6 @@ CREATE TABLE `activity` (
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `note` varchar(256) DEFAULT NULL COMMENT '备注'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动表';
-
---
--- Dumping data for table `activity`
---
-
-INSERT INTO `activity` (`id`, `name`, `label`, `time`, `time_len`, `join_num`, `pub_dancer_id`, `pub_dancer`, `status`, `join_dancer`, `place`, `create_time`, `note`) VALUES
-(1, 'dance', '地板舞, 震感舞', '2018-04-02 00:00:00', 2, 3, 0, '劳华', '0', '鸡威,劳华', 'a1', '2018-04-01 00:00:00', NULL),
-(2, 'powermove', '1', '2018-03-18 19:00:00', 2, 1, 0, '劳华', '1', '劳华', 'A1', '2018-04-16 15:55:35', '死了都要练'),
-(5, 'adfds', '破瓶,黑怕', '2018-03-18 19:00:00', 2, 6, 0, 'zuihouyici', '0', 'zuihouyici', 'asdf', '2018-04-30 14:36:56', 'df'),
-(6, 'hahahah', '地板舞,破瓶,黑怕', '2018-03-18 19:00:00', 2, 0, 0, 'zuihouyici', '1', NULL, 'asdfds', '2018-04-30 14:38:17', 'asdfad'),
-(7, 'adfad', '破瓶,黑怕', '2018-03-18 19:00:00', 2, 0, 0, 'zuihouyici', '1', NULL, 'asdf', '2018-04-30 14:38:35', 'adf'),
-(8, '发布活动了啊', '破瓶,黑怕', '2018-03-18 19:00:00', 1, 1, 7, '少东', '1', '少东', '爱的发的撒', '2018-05-01 09:39:06', '哈哈哈哈'),
-(9, '又来发布活动', '破瓶,黑怕', '2018-03-18 19:00:00', 2, 1, 7, '少东', '0', '少东', '舞室', '2018-05-01 09:40:05', '打发点'),
-(10, '我发布的活动', '破瓶,黑怕', '2018-03-18 19:00:00', 1, 1, 7, '少东', '0', '少东', '发大多数', '2018-05-01 09:46:31', '阿道夫'),
-(11, 'hahaha', '黑怕,锁舞', '2018-04-02 00:00:00', 1, 1, 7, '少东', '0', '少东', 'adfsadf', '2018-05-01 10:09:37', 'adfds');
 
 -- --------------------------------------------------------
 
@@ -120,12 +105,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `school`, `label`, `gender`, `phone`, `type`, `img_url`) VALUES
-(1, '劳华', '华南理工大学', '地板舞', '男', '18925830351', '学生', NULL),
-(2, 'jv', '华南理工大学', '锁舞', '男', '123456789', '学生', NULL),
-(3, '测试添加', '华工', '地板舞,破瓶', '男生', '2313123', '社会工作者', 'uploads/1525058699851-timg.jpeg'),
-(4, '哈喽', '中大', '破瓶,黑怕', '男生', '12312312', '社会工作者', ''),
-(5, '哈喽', '中大', '破瓶,黑怕', '男生', '12312312', '社会工作者', ''),
-(6, 'hahah', '广工', '破瓶,黑怕', '男生', '123123', '社会工作者', 'uploads/1525058927798-UI.jpg'),
 (7, '少东', '华南理工大学大学城', '地板舞,锁舞', '男生', '232432543534', '学生', 'uploads/1525059003081-WechatIMG1.jpeg');
 
 -- --------------------------------------------------------
@@ -141,17 +120,6 @@ CREATE TABLE `user_activity` (
   `pub_status` int(11) NOT NULL COMMENT '发布状态',
   `join_status` int(11) NOT NULL COMMENT '参与状态'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户活动表';
-
---
--- Dumping data for table `user_activity`
---
-
-INSERT INTO `user_activity` (`id`, `user_id`, `activity_id`, `pub_status`, `join_status`) VALUES
-(1, 1, 0, 1, 1),
-(2, 1, 1, 1, 1),
-(6, 7, 1, 1, 2),
-(10, 7, 5, 1, 2),
-(16, 7, 9, 1, 2);
 
 --
 -- Indexes for dumped tables
@@ -213,7 +181,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id', AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
