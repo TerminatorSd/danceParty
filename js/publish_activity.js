@@ -1,8 +1,15 @@
 
 'use strict';
 
+//发布者id
+var userId = getStorage('userId');
+
 $(document).ready(function () {
-	
+
+	if(!userId) {
+		alert('please 先注册');
+		location.href = 'register.html';
+	}
 	// label选择
 	$('.label').each(function (e) {
 		$(this).click(function () {
@@ -20,10 +27,7 @@ $(document).ready(function () {
 })
 
 function publishActivity (argument) {
-
-	//发布者id
-	var userId = getStorage('userId');
-
+		
 	// 活动内容
 	var name = $('input[name=name]').val();
 	var time = $('input[name=time]').val();

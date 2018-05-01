@@ -1,6 +1,14 @@
+'use strict';
+
+var userId = getStorage('userId');
+
 $(document).ready(function(){
 
-  var userId = getStorage('userId');
+  if(!userId) {
+    alert('please 先注册');
+    location.href = 'register.html';
+  }
+
 	$.ajax({
     url: domain + '/activity/list',
     type: 'get',

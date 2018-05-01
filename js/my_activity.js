@@ -6,6 +6,11 @@ var activityType = 0;
 
 $(document).ready(function () {
 
+	if(!userId) {
+    alert('please 先注册');
+    location.href = 'register.html';
+  }
+
 	getActivityList(activityType);
 
 	//点击三种活动类型
