@@ -1,7 +1,8 @@
 
 "use strict"
 
-var domain = "http://127.0.0.1:3000";
+var domain = "http://39.108.163.91:3000";
+// var domain = "http://127.0.0.1:3000";
 
 //设置cookie
 function setCookie(name,value,days)
