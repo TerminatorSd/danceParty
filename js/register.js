@@ -90,7 +90,6 @@ function changeImg() {
 // 点击下一步
 function nextStep () {
 
-		
 	var name = $('input[name = name]').val();
 	var identity = $('.chosen-identity').text();
 	var school = $('#school').find('option:selected').text();
@@ -135,7 +134,7 @@ function nextStep () {
 	          alert("注册失败！");
 		    },
 		    error: function(err) { 
-	        alert("err");
+	        alert(err);
 		      console.log(err);
 		    }
 		});
