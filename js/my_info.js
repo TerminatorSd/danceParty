@@ -30,7 +30,7 @@ function getUserInfo() {
       	var labelStr = '';
       	labelStr += '<span class="left">标签：</span>';
       	$.each(data.data.label.split(','), function(index, val) {
-      		if(index == data.data.label.split(',').length - 1) {
+      		if(index == 0) {
       			labelStr += '<span class="label margin-right-4">' + val + '</span>'
       		} else {
       			labelStr += '<span class="label">' + val + '</span>';
