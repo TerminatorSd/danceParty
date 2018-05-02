@@ -92,6 +92,7 @@ body {
 .card {
   width: 92.4vw;
   margin-top: 1.4vw;
+  margin-bottom: 1.4vw;
   margin-left: 3.5vw;
   background-color: white;
   border: 0.2vw solid #E8E8EA;
