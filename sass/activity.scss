@@ -4,7 +4,12 @@ body {
 	background-color: #F3F7F9;
 	/*overflow: hidden;*/
 }
-
+.no-activity {
+	display: block;
+	text-align: center;
+	color: grey;
+	margin-top: 40px;
+}
 .body {
 	overflow: hidden;
 
