@@ -3,6 +3,7 @@
 
 var express             = require('express');
 var multer = require("multer");
+// var md5 = require('md5');
 var app                 = express();
 var bodyParse           = require('body-parser');
 var cookieParser        = require('cookie-parser');
@@ -17,7 +18,9 @@ var storage = multer.diskStorage({
         cb(null, './uploads');
     },
     filename: function(req, file, cb) {
-        cb(null, `${Date.now()}-${file.originalname}`)
+      // var fileFormat =(file.originalname).split(".");
+      // cb(null, file.fieldname + '-' + md5(file) + "." + fileFormat[fileFormat.length - 1]);
+      cb(null, `${Date.now()}-${file.originalname}`)
     }
 })
 var upload = multer({ storage: storage });

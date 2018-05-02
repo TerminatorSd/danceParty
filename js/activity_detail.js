@@ -42,7 +42,7 @@ function getActivityDetail () {
                 },
                 success: function(data) {
                   if(data.code == 0){
-                    if (data.data.name = activity.pub_dancer) {
+                    if (data.data.name == activity.pub_dancer) {
                       $('.signup-btn').addClass('bg-invalid-exam');
                       $('.signup-btn').text('我发布的');
                       document.getElementsByClassName('signup-btn')[0].onclick = function (event) {
