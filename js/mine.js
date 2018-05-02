@@ -25,6 +25,7 @@ $(document).ready(function () {
 		   }
 		});
 	} else {
+		$('header a').attr('href', 'register.html');
 		// 显示注册按钮
 		$('.name').hide();
 		$('.role').hide();
