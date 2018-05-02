@@ -50,7 +50,7 @@ function publishActivity (argument) {
 	var note = $('input[name=note]').val();
 
 	// 空值检测
-	if(!name || !time || !place || !time_len || !label){
+	if(!name || !date || !hour || !place || !time_len || !label){
 		alert("未全部填写完成");
 	} else{
 		$.ajax({
