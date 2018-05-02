@@ -30,10 +30,15 @@ function publishActivity (argument) {
 		
 	// 活动内容
 	var name = $('input[name=name]').val();
-	var time = $('input[name=time]').val();
+	var date = $('input[name=date]').val();
+	var hour = $('input[name=hour]').val();
 	var place = $('input[name=place]').val();
 	var time_len = $('select[name=time_len]').val();
 	var label = '';
+
+	// 日期时间拼接
+	var time = date + ' ' + hour;
+	// 标签内容读取
 	$.each($('.active'), function () {
 		if (label) {
 			label += ',' + $(this).text();
