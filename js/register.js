@@ -139,7 +139,9 @@ function nextStep () {
 	if(!name || !gender || !phone || !label || (identity =="学生" && school=="选择你的大学")){
 		alert("未全部填写完成!");
 	}
-	else{
+	else if (!imgUrl) {
+		alert('fucking you，上传照骗');
+	} else {
 		$.ajax({
 		    url: domain + '/user/register',
 		    type: 'post',
