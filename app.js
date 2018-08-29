@@ -29,6 +29,7 @@ var imgBaseUrl = '../'
 
 app.use(cookieParser());
 app.use(bodyParse.urlencoded({extended:false}));
+app.use(bodyParse.json());
 app.use(express.static('public'));
 
 // 解决跨域问题
@@ -58,6 +59,10 @@ app.post('/login',function(req,res){
 
 // 测试接口，获取所有学校信息
 app.get('/all/school', school.getAll);
+app.post('/all/test', function(req, res) {
+  console.log(req.body);
+});
+
 
 // //用户模块1：获取用户信息
 // app.get('/user/info', function (req, res) {

@@ -3,6 +3,8 @@ var mysql = require('../mysql')
 
 // 获取学校列表
 exports.getAll = function (req, res) {
+	console.log(req.query);
+	console.log('school');
 
 	var query = 'select * from school';
 
