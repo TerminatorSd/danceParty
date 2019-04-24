@@ -93,6 +93,7 @@ app.post('/getSignature', function(req, res) {
                   var rlt = buff.toString();
                   var config = sign(JSON.parse(rlt).ticket, url);
                   console.log(config);
+                  console.log(Res.json(config));
                   Res.json(config);
               });
 
