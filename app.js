@@ -66,8 +66,8 @@ app.post('/getSignature', function(req, res) {
   var token = 'wechat',
       appsecret = '4c8fa051b8aab048d9ff5da037fc5229', //你申请的
       APPID = 'wx2186ed05bd0e775d', //你申请的id
-      url = 'http://www.shaodongweb.top' //JS接口安全域名 参与签名用的
-  Res = res;
+      url = 'http://www.shaodongweb.top'; //JS接口安全域名 参与签名用的
+  var Res = res;
   //发送https get请求 获取 access_token;l
   https.get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + APPID + "&secret=" + appsecret, function(res) {
       var datas = [];
