@@ -79,7 +79,9 @@ app.post('/getSignature', function(req, res) {
       res.on("end", function() {
           var buff = Buffer.concat(datas, size);
           var result = buff.toString();
-          console.log(JSON.parse(result).access_token);
+          console.log(JSON.parse(result));
+
+          // console.log(JSON.parse(result).access_token);
           // 获取 jsapi_ticket //异步嵌套是不合理的 不推荐这样 使用promise
           https.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + JSON.parse(result).access_token + '&type=jsapi', function(res) {
               var datas = [];
