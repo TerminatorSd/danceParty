@@ -18,7 +18,7 @@ var path = require('path');
 // var ejs = require('ejs'); // 后台模板库
 var wechat = require('wechat'); //第三方处理微信推送的库
 var https = require('https'); // node 端 请求别的服务的模块
-// var sign = require('./sign'); //微信提供的签名工具
+var sign = require('sign'); //微信提供的签名工具
 
 // mock json
 var jsonData = require('./data.json')
