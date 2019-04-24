@@ -12,6 +12,15 @@ var school = require('./backend/school');
 var user = require('./backend/user');
 var activity = require('./backend/activity');
 
+// wechat
+var path = require('path');
+// var request = require('./request.js');
+var ejs = require('ejs'); // 后台模板库
+var wechat = require('wechat'); //第三方处理微信推送的库
+var https = require('https'); // node 端 请求别的服务的模块
+// var sign = require('./sign'); //微信提供的签名工具
+
+// mock json
 var jsonData = require('./data.json')
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -46,6 +55,60 @@ app.all('*',function (req, res, next) {
   }
 });
 
+// 访问微信接口相关配置
+//处理URL 验证的 微信服务器要通过get请求来测试的
+app.get('/weixin', wechat('wechat', function(req, res, next) {
+  console.log('true');
+}));
+
+//处理后台获取签名的请求
+app.post('/getSignature', function(req, res) {
+  var token = 'wechat',
+      appsecret = '4c8fa051b8aab048d9ff5da037fc5229', //你申请的
+      APPID = 'wx2186ed05bd0e775d', //你申请的id
+      url = 'http://www.shaodongweb.top' //JS接口安全域名 参与签名用的
+  Res = res;
+  //发送https get请求 获取 access_token;l
+  https.get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + APPID + "&secret=" + appsecret, function(res) {
+      var datas = [];
+      var size = 0;
+      res.on('data', function(data) {
+          datas.push(data);
+          size += data.length;
+      });
+      res.on("end", function() {
+          var buff = Buffer.concat(datas, size);
+          var result = buff.toString();
+          //console.log(JSON.parse(result).access_token);
+          // 获取 jsapi_ticket //异步嵌套是不合理的 不推荐这样 使用promise
+          https.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + JSON.parse(result).access_token + '&type=jsapi', function(res) {
+              var datas = [];
+              var size = 0;
+              res.on('data', function(data) {
+                  datas.push(data);
+                  size += data.length;
+              });
+              res.on('end', function() {
+                  var buff = Buffer.concat(datas, size);
+                  var rlt = buff.toString();
+                  var config = sign(JSON.parse(rlt).ticket, url);
+                  console.log(config);
+                  Res.json(config);
+              });
+
+          }).on('error', function(e) {
+              console.log("Got error: " + e.message);
+          })
+
+
+      });
+
+  }).on('error', function(e) {
+      console.log("Got error: " + e.message);
+  });
+
+});
+
 // 获取广场动态接口
 app.get('/square/news', square.getNews);
 
@@ -62,7 +125,6 @@ app.get('/all/school', school.getAll);
 app.post('/all/test', function(req, res) {
   console.log(req.body);
 });
-
 
 // //用户模块1：获取用户信息
 // app.get('/user/info', function (req, res) {

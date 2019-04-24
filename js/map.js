@@ -7,7 +7,7 @@
  */
 
 var url = location.href.split('#')[0];     //获取当前地址，切记微信是要筛出#后面的地址
-$.post("weixin/getJSSDKSign",
+$.post("/getSignature",
     {url:url},
     function(data){
 //通过config注入接口权限
