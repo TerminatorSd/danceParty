@@ -68,7 +68,7 @@ app.post('/getSignature', function(req, res) {
       APPID = 'wx2186ed05bd0e775d', //你申请的id
       url = 'http://www.shaodongweb.top'; //JS接口安全域名 参与签名用的
   var Res = res;
-  //发送https get请求 获取 access_token;l
+  //发送https get请求 获取 access_token;
   https.get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + APPID + "&secret=" + appsecret, function(res) {
       var datas = [];
       var size = 0;
